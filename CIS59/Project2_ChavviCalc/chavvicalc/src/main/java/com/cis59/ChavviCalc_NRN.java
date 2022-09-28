@@ -8,6 +8,8 @@ package com.cis59;
 
 import java.util.*;
 
+import javax.lang.model.util.ElementScanner14;
+
 public class ChavviCalc_NRN {
   public static void main(String[] args) {
     // Create Scanner to Accept Keyboard Input
@@ -126,19 +128,29 @@ public class ChavviCalc_NRN {
         }
         break;
       case '+':
+        System.out.println("The value of A will be updated to the sum of A + B.");
         result = userInputA + userInputB;
         break;
       case '-':
+        System.out.println("The value of A will be updated to A - B.");
         result = userInputA - userInputB;
         break;
       case '*':
+        System.out.println("The value of A will be updated to the product of A * B.");
         result = userInputA * userInputB;
         break;
       case '/':
-        result = userInputA / userInputB;
+        if (userInputB == 0)
+        {
+          System.out.println("Please change B to a number other than 0, as dividing by zero equals infinity.");
+        }
+        else {
+          System.out.println("The value of A will be updated to equal A / B.")
+          result = userInputA / userInputB;
+        }
         break;
       default:
-        System.out.println("ERROR: Unknown commmand within Calculator Function.");
+        System.out.println("ERROR: Unknown commmand within Calculator Function.");/
     }
 
     return result;
