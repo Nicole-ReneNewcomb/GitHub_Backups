@@ -92,12 +92,34 @@ public class ChavviCalc_NRN {
         System.out.println("Thank you for using Chavvi Calc.");
         break;
       case 'a':
+        boolean userEnteredFloat = false;
+
         System.out.println("Please enter a float value for A that includes up to 3 decimal places.");
-        result = scan.nextFloat();
+
+        while (!userEnteredFloat)
+        {
+        if (scan.hasNextFloat())
+        {
+          result = scan.nextFloat();
+          userEnteredFloat = true;
+        }
+        else 
+        {
+          System.out.println("Please enter numbers only.");
+          break;
+        }
+        }
         break;
       case 'b':
         System.out.println("Please enter a float value for B that includes up to 3 decimal places.");
-        result = scan.nextFloat();
+        if (scan.hasNextFloat())
+        {
+          result = scan.nextFloat();
+        }
+        else 
+        {
+          System.out.println("Please enter numbers only.");
+        }
         break;
       case '+':
         result = userInputA + userInputB;
