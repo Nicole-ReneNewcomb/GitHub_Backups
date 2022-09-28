@@ -1,0 +1,55 @@
+Microsoft (R) Macro Assembler Version 14.33.31630.0	    09/25/22 19:11:02
+NRN_First_Program_ASM.asm				     Page 1 - 1
+
+
+				; My first Assembly Language Program
+				.386
+				.model flat,stdcall
+				.stack 4096
+
+ 00000000			.code
+ 00000000			main PROC
+ 00000000  B8 00020000		   mov eax, 20000h ; set eax = 20000h
+ 00000005  BB 00030000		   mov ebx, 30000h ; set ebx = 30000h
+ 0000000A  03 C3		   add eax, ebx ; add ebx to eax (eax = eax + ebx)
+ 0000000C			main ENDP
+				END main
+Microsoft (R) Macro Assembler Version 14.33.31630.0	    09/25/22 19:11:02
+NRN_First_Program_ASM.asm				     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+STACK  . . . . . . . . . . . . .	32 Bit	 00001000 DWord	  Stack	  'STACK'	 
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000000 DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 0000000C DWord	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000000C Public STDCALL
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+
+	   0 Warnings
+	   0 Errors
