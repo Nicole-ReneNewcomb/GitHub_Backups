@@ -109,7 +109,7 @@ public class ChavviCalc_NRN {
         }
         break;
         case 'b':
-        boolean userEnteredFloat = false;
+        userEnteredFloat = false;
 
         while (!userEnteredFloat) {
           
