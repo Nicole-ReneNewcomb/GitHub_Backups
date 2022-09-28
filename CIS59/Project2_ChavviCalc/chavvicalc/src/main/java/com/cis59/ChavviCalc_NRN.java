@@ -10,7 +10,8 @@ import java.util.*;
 
 public class ChavviCalc_NRN 
 {
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         // Create Scanner to Accept Keyboard Input
         Scanner scan = new Scanner(System.in);
 
@@ -24,16 +25,36 @@ public class ChavviCalc_NRN
           printMenu(userInputA, userInputB);
           System.out.print("Enter a command: ");
           command = menuGetCommand(scan);
-    
-          executeCommand(scan, command);
+            
+            if (command == 'a')
+            {
+                userInputA = updateInputA(scan);
+            }
+            else if (command == 'b')
+            {
+                userInputB = updateInputB(scan);
+            }
+            else if (command == 'c')
+            {
+                userInputA = 0.000f;
+                userInputB = 0.000f;
+            }
+            else if (command == '+' || command == '-' || command == '*' || command == '/' || command == 'q') {
+                executeCommand(command);
+            }
+            else {
+                System.out.println("Please enter a single character shown on the menu.")
+            }
         }
     
         scan.close();
-      }
+    }
     
+
       
       // Function to Print Menu Block Seperation Lines
-      private static void printMenuLine() {
+      private static void printMenuLine() 
+      {
         System.out.println(
           "----------------------------------------------------------"
         );
@@ -63,12 +84,13 @@ public class ChavviCalc_NRN
         printMenuLine();
       }
     
-      // get first character from input
+      // Function Returns Single Lowercase Character from User Input
       private static Character menuGetCommand(Scanner scan) {
         Character command = '_';
     
         String rawInput = scan.nextLine();
     
+        // Converts Input to Lowercase and Keeps Only First Character
         if (rawInput.length() > 0) {
           rawInput = rawInput.toLowerCase();
           command = rawInput.charAt(0);
@@ -77,21 +99,36 @@ public class ChavviCalc_NRN
         return command;
       }
     
-      // calculator functions
-      private static Boolean executeCommand(Scanner scan, Character command) {
+      // Calculator Functions
+      private static Boolean executeCommand(Character command) {
         Boolean success = true;
     
         switch (command) {
           case 'q':
-            System.out.println("Thank you for using Chavvi Calc");
+            System.out.println("Thank you for using Chavvi Calc.");
             break;
+          case 'a':
+            System.out.println("Please enter a value for A.");
           default:
-            System.out.println("ERROR: Unknown commmand");
+            System.out.println("ERROR: Unknown commmand. Please enter a single character option from the menu.");
             success = false;
         }
     
         return success;
-    }
+      }
 
+      // Function That Changes Value of A
+      private static float updateInputA(Scanner scan) {
+
+        // Instruct User to Input a Value for A
+        System.out.println("Please enter a value for A.");
+      }
+
+      // Function That Changes Value of B
+      private static float updateInputB(Scanner scan) {
+
+        // Instruct User to Input a Value for A
+        System.out.println("Please enter a value for A.");
+    }
     
 }
