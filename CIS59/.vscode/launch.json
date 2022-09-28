@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ChavviCalcExampleApp",
+            "request": "launch",
+            "mainClass": "com.chavviCalcExample.ChavviCalcExampleApp",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Launch ChavviCalc_NRN2",
+            "request": "launch",
+            "mainClass": "com.cis59.ChavviCalc_NRN2",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Launch ChavviCalc_NRN",
             "request": "launch",
             "mainClass": "com.cis59.ChavviCalc_NRN",

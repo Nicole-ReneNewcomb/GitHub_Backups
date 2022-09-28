@@ -8,7 +8,7 @@ package com.cis59;
 
 import java.util.*;
 
-public class ChavviCalc_NRN 
+public class ChavviCalc_NRN2 
 {
     public static void main(String[] args) 
     {
@@ -26,18 +26,21 @@ public class ChavviCalc_NRN
           System.out.print("Enter a command: ");
           command = menuGetCommand(scan);
             
-            if (command == 'a' || command == '+' || command == '-' || command == '*' || command == '/')
+            if (command == 'a')
             {
-                userInputA = executeCommand(scan, command, userInputA, userInputB);
+                userInputA = executeCommand(command);
             }
             else if (command == 'b')
             {
-                userInputB = executeCommand(scan, command, userInputA, userInputB);
+                userInputB = updateInputB(scan);
             }
             else if (command == 'c')
             {
                 userInputA = 0.000f;
                 userInputB = 0.000f;
+            }
+            else if (command == '+' || command == '-' || command == '*' || command == '/') {
+                userInputA = executeCommand(command);
             }
             else {
                 System.out.println("Please enter a single character shown on the menu.")
@@ -68,7 +71,7 @@ public class ChavviCalc_NRN
         System.out.println("Chavvi Calc");
         printMenuLine();
         System.out.printf("A = %,.3f\tB = %,.3f\n", userInputA, userInputB);
-        printMenuLine();
+    
         printMenuCommand('a', "Enter a value for A");
         printMenuCommand('b', "Enter a value for B");
         printMenuCommand('+', "Add");
@@ -77,6 +80,7 @@ public class ChavviCalc_NRN
         printMenuCommand('/', "Divide");
         printMenuCommand('c', "Clear");
         printMenuCommand('q', "Quit");
+    
         printMenuLine();
       }
     
@@ -96,32 +100,35 @@ public class ChavviCalc_NRN
       }
     
       // Calculator Functions
-      private static float executeCommand(Scanner scan, Character command, float userInputA, float userInputB) {
-        float result;
+      private static float executeCommand(Character command) {
+        float calculationResult = 0.000f;
     
         switch (command) {
           case 'q':
             System.out.println("Thank you for using Chavvi Calc.");
             break;
           case 'a':
-            System.out.println("Please enter a float value for A that includes up to 3 decimal places.");
-              result = scan.nextFloat();
-          case 'b':
-            System.out.println("Please enter a float value for B that includes up to 3 decimal places.");
-              result = scan.nextFloat();
-          case '+':
-            result = userInputA + userInputB;
-          case '-':
-            result = userInputA - userInputB;
-          case '*':
-            result = userInputA * userInputB;
-          case '/':
-            result = userInputA / userInputB;
+            System.out.println("Please enter a value for A.");
           default:
-            System.out.println("ERROR: Unknown commmand within Calculator Function.");
+            System.out.println("ERROR: Unknown commmand. Please enter a single character option from the menu.");
+            success = false;
         }
     
-        return result;
+        return calculationResult;
       }
+
+      // Function That Changes Value of A
+      private static float updateInputA(Scanner scan) {
+
+        // Instruct User to Input a Value for A
+        System.out.println("Please enter a value for A.");
+      }
+
+      // Function That Changes Value of B
+      private static float updateInputB(Scanner scan) {
+
+        // Instruct User to Input a Value for A
+        System.out.println("Please enter a value for A.");
+    }
     
 }
