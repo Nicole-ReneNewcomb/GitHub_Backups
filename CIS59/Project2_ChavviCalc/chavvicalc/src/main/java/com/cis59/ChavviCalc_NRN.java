@@ -31,6 +31,7 @@ public class ChavviCalc_NRN {
       } else if (command == 'b') {
         userInputB = executeCommand(scan, command, userInputA, userInputB);
       } else if (command == 'c') {
+        System.out.println("Clear: A and B will reset to 0.000");
         userInputA = 0.000f;
         userInputB = 0.000f;
       } else {
@@ -145,12 +146,12 @@ public class ChavviCalc_NRN {
           System.out.println("Please change B to a number other than 0, as dividing by zero equals infinity.");
         }
         else {
-          System.out.println("The value of A will be updated to equal A / B.")
+          System.out.println("The value of A will be updated to equal A / B.");
           result = userInputA / userInputB;
         }
         break;
       default:
-        System.out.println("ERROR: Unknown commmand within Calculator Function.");/
+        System.out.println("ERROR: Unknown commmand within Calculator Function.");
     }
 
     return result;
