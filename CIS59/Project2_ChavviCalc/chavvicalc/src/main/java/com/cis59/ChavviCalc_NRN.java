@@ -97,7 +97,7 @@ public class ChavviCalc_NRN {
         while (!userEnteredFloat) {
           
           scan = new Scanner(System.in);
-          System.out.println("Please enter a float value for A that includes up to 3 decimal places.");
+          System.out.println("Please enter a number for A with up to 3 decimal places.");
 
           if (scan.hasNextFloat()) {
             result = scan.nextFloat();
@@ -114,7 +114,7 @@ public class ChavviCalc_NRN {
         while (!userEnteredFloat) {
           
           scan = new Scanner(System.in);
-          System.out.println("Please enter a float value for B that includes up to 3 decimal places.");
+          System.out.println("Please enter a number for B with up to 3 decimal places.");
 
           if (scan.hasNextFloat()) {
             result = scan.nextFloat();
