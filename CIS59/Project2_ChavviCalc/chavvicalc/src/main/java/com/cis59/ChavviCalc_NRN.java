@@ -10,26 +10,26 @@ import java.util.*;
 
 public class ChavviCalc_NRN 
 {
-    public static void main(String[] args) 
-    {
-        // Create Scanner to Accept Keyboard Input
-        Scanner scan = new Scanner(System.in);
+  public static void main(String[] args) 
+  {
+    // Create Scanner to Accept Keyboard Input
+    Scanner scan = new Scanner(System.in);
 
-        // Declare & Initialize Variables
-        Character command = '_';
-        float userInputA = 0.000f;
-        float userInputB = 0.000f;
+    // Declare & Initialize Variables
+    Character command = '_';
+    float userInputA = 0.000f;
+    float userInputB = 0.000f;
     
-        // Calculator Loop - Repeats Until User Quits
-        while (command != 'q') {
-          printMenu(userInputA, userInputB);
-          System.out.print("Enter a command: ");
-          command = menuGetCommand(scan);
+    // Calculator Loop - Repeats Until User Quits
+    while (command != 'q') {
+      printMenu(userInputA, userInputB);
+      System.out.print("Enter a command: ");
+      command = menuGetCommand(scan);
             
-            if (command == 'a' || command == '+' || command == '-' || command == '*' || command == '/')
-            {
-                userInputA = executeCommand(scan, command, userInputA, userInputB);
-            }
+        if (command == 'a' || command == '+' || command == '-' || command == '*' || command == '/' || command == 'q')
+        {
+            userInputA = executeCommand(scan, command, userInputA, userInputB);
+        }
             else if (command == 'b')
             {
                 userInputB = executeCommand(scan, command, userInputA, userInputB);
@@ -42,7 +42,7 @@ public class ChavviCalc_NRN
             else {
                 System.out.println("Please enter a single character shown on the menu.");
             }
-        }
+      }
     
         scan.close(); 
     }
@@ -105,17 +105,23 @@ public class ChavviCalc_NRN
           case 'a':
             System.out.println("Please enter a float value for A that includes up to 3 decimal places.");
               result = scan.nextFloat();
+              break;
           case 'b':
             System.out.println("Please enter a float value for B that includes up to 3 decimal places.");
               result = scan.nextFloat();
+              break;
           case '+':
             result = userInputA + userInputB;
+            break;
           case '-':
             result = userInputA - userInputB;
+            break;
           case '*':
             result = userInputA * userInputB;
+            break;
           case '/':
             result = userInputA / userInputB;
+            break;
           default:
             System.out.println("ERROR: Unknown commmand within Calculator Function.");
         }
