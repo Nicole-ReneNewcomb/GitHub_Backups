@@ -8,8 +8,6 @@ package com.cis59;
 
 import java.util.*;
 
-import javax.lang.model.util.ElementScanner14;
-
 public class ChavviCalc_NRN {
   public static void main(String[] args) {
     // Create Scanner to Accept Keyboard Input
@@ -98,7 +96,7 @@ public class ChavviCalc_NRN {
         boolean userEnteredFloat = false;
 
         while (!userEnteredFloat) {
-          
+
           scan = new Scanner(System.in);
           System.out.println("Please enter a number for A with up to 3 decimal places.");
 
@@ -111,11 +109,11 @@ public class ChavviCalc_NRN {
           }
         }
         break;
-        case 'b':
+      case 'b':
         userEnteredFloat = false;
 
         while (!userEnteredFloat) {
-          
+
           scan = new Scanner(System.in);
           System.out.println("Please enter a number for B with up to 3 decimal places.");
 
@@ -141,11 +139,9 @@ public class ChavviCalc_NRN {
         result = userInputA * userInputB;
         break;
       case '/':
-        if (userInputB == 0)
-        {
+        if (userInputB == 0) {
           System.out.println("Please change B to a number other than 0, as dividing by zero equals infinity.");
-        }
-        else {
+        } else {
           System.out.println("The value of A will be updated to equal A / B.");
           result = userInputA / userInputB;
         }
