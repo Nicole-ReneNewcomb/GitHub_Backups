@@ -1,0 +1,82 @@
+Microsoft (R) Macro Assembler Version 14.33.31630.0	    10/04/22 23:46:37
+NRN_Assignment3_1.asm					     Page 1 - 1
+
+
+				; Nicole-Rene Newcomb's code for Assignment3, Problem 1.
+
+				; Program Description: Exchange every pair of values in an
+				; aray with an even number of elements using a loop.
+				; Author: Nicole-Rene Newcomb
+				; Creation Date: 10/04/2022
+
+				.386
+				.model flat,stdcall
+				.stack 4096
+				ExitProcess PROTO, dwExitCode:DWORD
+
+ 00000000			.data
+ 00000000 00000064		evenArray DWORD 100,200,300,400,500,600
+	   000000C8
+	   0000012C
+	   00000190
+	   000001F4
+	   00000258
+
+ 00000000			.code
+ 00000000			main PROC
+ 00000000  BF 00000000 R	   mov edi, OFFSET evenArray              ; sets edi to start of evenArray
+ 00000005  B9 00000003		   mov ecx, (LENGTHOF evenArray) / 2      ; sets ecx loop counter to length / 2
+ 0000000A  B8 00000000		   mov eax, 0                             ; sets eax to zero before math functions
+ 0000000F			L1:
+ 0000000F  8B 07		   mov eax, [edi]                         ; moves value of evenArray at edi location to eax
+ 00000011  87 47 04		   xchg eax, [edi + TYPE evenArray]       ; exchanges value of (evenArray + 1 index space) from edi location with eax
+ 00000014  87 07		   xchg eax, [edi]                        ; exchanges value of evenArray at edi location with eax
+ 00000016  83 C7 08		   add edi, (TYPE evenArray) * 2          ; moves edi two index spaces further along the evenArray
+ 00000019  E2 F4		   loop L1
+				   INVOKE ExitProcess, 0
+ 0000001B  6A 00	   *	    push   +000000000h
+ 0000001D  E8 00000000 E   *	    call   ExitProcess
+ 00000022			main ENDP
+				END main
+Microsoft (R) Macro Assembler Version 14.33.31630.0	    10/04/22 23:46:37
+NRN_Assignment3_1.asm					     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+STACK  . . . . . . . . . . . . .	32 Bit	 00001000 DWord	  Stack	  'STACK'	 
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000018 DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000022 DWord	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+ExitProcess  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000022 Public STDCALL
+  L1 . . . . . . . . . . . . . .	L Near	 0000000F _TEXT	
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+evenArray  . . . . . . . . . . .	DWord	 00000000 _DATA	
+
+	   0 Warnings
+	   0 Errors

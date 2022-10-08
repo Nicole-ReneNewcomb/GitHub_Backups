@@ -1,0 +1,5 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets(5599,5): warning MSB3061: Unable to delete file "C:\Users\Nicole-Rene\Documents\GitHub\GitHub_Backups\CMPR120\Project_4\x64\Debug\Project_4.exe". Access to the path 'C:\Users\Nicole-Rene\Documents\GitHub\GitHub_Backups\CMPR120\Project_4\x64\Debug\Project_4.exe' is denied.
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppClean.targets(77,5): warning : Access to the path 'c:\users\nicole-rene\documents\github\github_backups\cmpr120\project_4\x64\debug\project_4.exe' is denied.
+  Newcomb_Project_4.cpp
+C:\Users\Nicole-Rene\Documents\GitHub\GitHub_Backups\CMPR120\Project_4\Newcomb_Project_4.cpp(34,36): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+LINK : fatal error LNK1104: cannot open file 'C:\Users\Nicole-Rene\Documents\GitHub\GitHub_Backups\CMPR120\Project_4\x64\Debug\Project_4.exe'
