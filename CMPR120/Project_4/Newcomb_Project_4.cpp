@@ -20,12 +20,18 @@ int main()
 	double result2 = double();
 	double imaginaryResult = double();
 
-
+	// Program Header
+	cout << endl;
+	cout << "Author: Nicole-Rene Newcomb" << endl;
+	cout << "Program: Newcomb_Project_4.cpp" << endl;
+	cout << "Date: October 2, 2022" << endl;
+	cout << "School: Santa Ana College (SAC)" << endl;
+	cout << "===================================" << endl;
 
 	// Explains Program, Requests Input, and Stores User Entries
 	cout << endl;
 	cout << "This Quadratic Equation Solver will solve equations in the form of: " << endl;
-	cout << "A*x^2 + B*x + C = 0, where A, B, and C are integers, and A is not equal to zero" << endl;
+	cout << "A*x^2 + B*x + C = 0, where A, B, and C are integers, and A is not equal to zero. \n" << endl;
 	cout << "Please enter the values of A, B, and C on one line seperated by a single space:" << endl;
 	cin >> userinputA >> userinputB >> userinputC;
 
@@ -36,14 +42,7 @@ int main()
 	result2 = (-userinputB - sqrt(discriminant)) / (2 * (double)userinputA);
 
 
-	// Output - Header
-	cout << endl;
-	cout << endl;
-	cout << "Author: Nicole-Rene Newcomb" << endl;
-	cout << "Program: Newcomb_Project_4.cpp" << endl;
-	cout << "Date: October 2, 2022" << endl;
-	cout << "School: Santa Ana College (SAC)" << endl;
-	cout << "===================================" << endl;
+
 
 
 	// Output - Program
@@ -61,8 +60,8 @@ int main()
 		else if (discriminant > 0)
 		{
 			cout << "The two real solutions are:" << endl;
-			cout << fixed << setprecision(4) << scientific << result1 << " and " << endl;
-			cout << fixed << setprecision(4) << scientific << result2 << endl;
+			cout << "x = " << fixed << setprecision(4) << scientific << setw(11) << right << result1 << " and " << endl;
+			cout << "x = " << fixed << setprecision(4) << scientific << setw(11) << right << result2 << endl;
 		}
 		else if (discriminant < 0)
 		{
@@ -70,11 +69,14 @@ int main()
 			result2 = -(userinputB) / (2 * (double)userinputA);
 			imaginaryResult = sqrt(-discriminant) / (2 * (double)userinputA);
 			cout << "The two imaginary solutions are: " << endl;
-			cout << fixed << setprecision(4) << scientific << result1 << " + (" << imaginaryResult << ")*I" << endl;
-			cout << fixed << setprecision(4) << scientific << result1 << " - (" << imaginaryResult << ")*I" << endl;
+			cout << "x = " << fixed << setprecision(4) << scientific << setw(11) << right << result1 << " + (" << imaginaryResult << ")*I and" << endl;
+			cout << "x = " << fixed << setprecision(4) << scientific << setw(11) << right << result1 << " - (" << imaginaryResult << ")*I" << endl;
+		}
+		else
+		{
+			cout << "Error: something has gone wrong. Please try again." << endl;
 		}
 	}
 
-	system("pause");
 	return 0;
 }
