@@ -8,6 +8,13 @@
             "type": "java",
             "name": "Launch App",
             "request": "launch",
+            "mainClass": "bigcats.src.main.java.com.cis59.App",
+            "projectName": "CIS59_1f9dcb35"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
             "mainClass": "com.cis59.App",
             "projectName": ""
         },
