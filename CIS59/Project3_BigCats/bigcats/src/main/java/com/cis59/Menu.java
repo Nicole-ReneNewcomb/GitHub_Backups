@@ -150,24 +150,26 @@ public class Menu {
             userInput = userInput.toLowerCase();
         }
 
-        while (userInput != "tiger" || userInput != "lion" || userInput != "jaguar")
+        while (!(userInput.equals("tiger") || userInput.equals("lion") || userInput.equals("jaguar")))
         {
-            userInput = null;
+            this.input = new Scanner(System.in);
             System.out.println("Please enter one of the following options: tiger, lion, or jaguar.");
             userInput = input.nextLine();
+            userInput = userInput.toLowerCase();
+            System.out.println(userInput);
         }
 
-        if (userInput == "tiger")
+        if (userInput.equals("tiger"))
         {
             result = new Tiger(name);
         }
 
-        else if (userInput == "lion")
+        else if (userInput.equals("lion"))
         {
             result = new Lion(name);
         }
 
-        else if (userInput == "jaguar")
+        else if (userInput.equals("jaguar"))
         {
             result = new Jaguar(name);
         }
