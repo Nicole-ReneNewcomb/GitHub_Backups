@@ -29,6 +29,8 @@ public class Tiger extends Panthera {
         s += "latitude: " + latitude();
         s += ", ";
         s += "fur: " + fur();
+        s += ", ";
+        s += "weight: " + weight();
         s += " }";
 
         return s;

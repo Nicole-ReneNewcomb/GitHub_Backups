@@ -1,5 +1,7 @@
 package com.cis59;
 
+import java.util.Random;
+
 /*
  * Panthera base class that simulates GPS information
  */
@@ -11,6 +13,10 @@ public class Panthera extends PantheraGPS {
         implementation.
      */
 
+    // weight attribute
+    private int catWeight;
+    private Random weightRandom;
+
     // constructor
     public Panthera(String name) {
 
@@ -19,6 +25,11 @@ public class Panthera extends PantheraGPS {
 
         // initialize attributes
         this.setSpecies("panthera");
+
+        // set weight of cats
+        this.weightRandom = new Random();
+        this.weightRandom.setSeed(this.seed(name + this.species()));
+        this.catWeight = 10 + weightRandom.nextInt(600);
 
     }
 
@@ -40,6 +51,12 @@ public class Panthera extends PantheraGPS {
 
         return s;
 
+    }
+
+    // function prints out “Rrrrrrrrroooooooaaaaarrrrr!”
+    public void roar()
+    {
+        System.out.println("Rrrrrrrrroooooooaaaaarrrrr!");
     }
 
 

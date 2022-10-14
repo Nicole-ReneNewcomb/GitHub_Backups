@@ -75,7 +75,7 @@ public class PantheraGPS {
     }
 
     // make a seed, based on the name
-    private Integer seed(String s) {
+    public Integer seed(String s) {
         Integer seed = 0;
 
         for (Integer i = 0; i < s.length() ; i++) {
