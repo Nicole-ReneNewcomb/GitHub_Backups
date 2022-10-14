@@ -274,7 +274,7 @@ public class Menu {
         do {
         
             // retrieve existing cat names from linked list via loop
-            for (Integer i = 0; i < catList.size(); i++) {
+            for (int i = 0; i < catList.size(); i++) {
                 catEntry = catList.get(i);
                 catName = catEntry.name();
                 
@@ -326,6 +326,7 @@ public class Menu {
         String userInput;
         Panthera cat;
         String catName;
+        boolean catFound = false;
 
         // request and store user input
         System.out.println("Please enter the name of the cat you wish to find: ");
@@ -341,12 +342,15 @@ public class Menu {
             if (catName.contains(userInput)) {
 
                 System.out.println(cat);
+                catFound = true;
             }
 
-            else {
-                
-                System.out.println("Sorry, no cat by that name was found.");
-            }
+        }
+
+        // if cat not found, output message to user
+        if (catFound == false)
+        {
+            System.out.println("Sorry, no cat by that name was found.");
         }
 
     }
