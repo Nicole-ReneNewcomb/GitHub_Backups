@@ -16,6 +16,7 @@ public class Panthera extends PantheraGPS {
     // weight attribute
     private int catWeight;
     private Random weightRandom;
+    private Random catSpeedRandom;
 
     // constructor
     public Panthera(String name) {
@@ -31,6 +32,9 @@ public class Panthera extends PantheraGPS {
         this.weightRandom.setSeed(this.seed(name + this.species()));
         this.catWeight = 10 + weightRandom.nextInt(600);
 
+        // create random speed for cats
+        this.catSpeedRandom = new Random();
+        this.catSpeedRandom.setSeed(this.seed(this.name() + this.catWeight));
     }
 
     // serializes attributes into a string
@@ -53,10 +57,24 @@ public class Panthera extends PantheraGPS {
 
     }
 
+    // function returns weight of cat
+    public int getWeight()
+    {
+        return this.catWeight;
+    }
+
     // function prints out “Rrrrrrrrroooooooaaaaarrrrr!”
     public void roar()
     {
         System.out.println("Rrrrrrrrroooooooaaaaarrrrr!");
+    }
+
+    // function returns current speed (random) of cat
+    public float getSpeed()
+    {
+        float catSpeed = this.catSpeedRandom.nextFloat(50);
+
+        return catSpeed;
     }
 
 

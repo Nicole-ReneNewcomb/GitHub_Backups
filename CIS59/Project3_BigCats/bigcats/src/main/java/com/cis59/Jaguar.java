@@ -32,6 +32,10 @@ public class Jaguar extends Panthera {
         s += ", ";
         s += "fur: " + fur();
         s += ", ";
+        s += "weight: " + getWeight();
+        s += ", ";
+        s += "speed: " + getSpeed();
+        s += ", ";
         s += "sleeps in trees: " + treeSleeping();
         s += " }";
 
@@ -39,15 +43,17 @@ public class Jaguar extends Panthera {
 
     }
 
+    // function returns fur type unique to Jaguar
     public String fur() {
         return "spots";
     }
 
+    // function returns unique tree sleeping attribute of Jaguar
     public String treeSleeping()
     {
         String treeSleepingString = this.sleepsInTrees ? "yes" : "no";
         return treeSleepingString;
-        
+
     }
 
 }

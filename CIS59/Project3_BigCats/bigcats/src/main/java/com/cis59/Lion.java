@@ -29,12 +29,17 @@ public class Lion extends Panthera {
         s += "latitude: " + latitude();
         s += ", ";
         s += "fur: " + fur();
+        s += ", ";
+        s += "weight: " + getWeight();
+        s += ", ";
+        s += "speed: " + getSpeed();
         s += " }";
 
         return s;
 
     }
 
+    // function returns fur type unique to Lion
     public String fur() {
         return "mane";
     }

@@ -30,13 +30,16 @@ public class Tiger extends Panthera {
         s += ", ";
         s += "fur: " + fur();
         s += ", ";
-        s += "weight: " + weight();
+        s += "weight: " + getWeight();
+        s += ", ";
+        s += "speed: " + getSpeed();
         s += " }";
 
         return s;
 
     }
 
+    // function returns fur type unique to Tiger
     public String fur() {
         return "stripes";
     }
