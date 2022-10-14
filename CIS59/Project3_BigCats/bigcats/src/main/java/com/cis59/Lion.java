@@ -1,8 +1,5 @@
 package com.cis59;
 
-/*
- * Panthera base class that simulates GPS information
- */
 public class Lion extends Panthera {
 
     // constructor

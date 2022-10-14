@@ -219,6 +219,14 @@ public class Menu {
 
     }
 
+    public void executeDeleteCat() {
+
+    }
+
+    public void executeFindCat() {
+        
+    }
+
     /*
         TIP:
         Additional methods and functionality need to be added to this class.

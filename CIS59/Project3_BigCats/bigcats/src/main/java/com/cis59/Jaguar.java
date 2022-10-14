@@ -1,9 +1,8 @@
 package com.cis59;
 
-/*
- * Panthera base class that simulates GPS information
- */
 public class Jaguar extends Panthera {
+
+    private boolean sleepsInTrees = true;
 
     // constructor
     public Jaguar(String name) {
@@ -32,6 +31,8 @@ public class Jaguar extends Panthera {
         s += "latitude: " + latitude();
         s += ", ";
         s += "fur: " + fur();
+        s += ", ";
+        s += "sleeps in trees: " + treeSleeping();
         s += " }";
 
         return s;
@@ -40,6 +41,11 @@ public class Jaguar extends Panthera {
 
     public String fur() {
         return "spots";
+    }
+
+    public String treeSleeping()
+    {
+        String treeSleepingString = this.sleepsInTrees ? "yes" : "no";
     }
 
 }
