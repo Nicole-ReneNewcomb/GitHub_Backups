@@ -158,7 +158,7 @@ public class Menu {
             Panthera result = new Tiger(name);
         }
 
-        else if (userInupt == "lion")
+        else if (userInput == "lion")
         {
             Panthera result = new Lion(name);
         }
@@ -170,7 +170,7 @@ public class Menu {
 
         else
         {
-            System.out.println("Error: Invalid input. Please be sure to enter tiger, lion, or jaguar only.")
+            System.out.println("Error: Invalid input. Please be sure to enter tiger, lion, or jaguar only.");
         }
 
         return result;
@@ -224,7 +224,7 @@ public class Menu {
     }
 
     public void executeFindCat() {
-        
+
     }
 
     /*
