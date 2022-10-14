@@ -262,31 +262,63 @@ public class Menu {
         // declare Panthera and string to hold linked list cat entries
         Panthera catEntry;
         String catName;
-        boolean nameExists;
+        boolean nameExists = false;
+        char userConfirmation = '_';
 
         // request user input to select name of cat for deletion
         System.out.println();
-        System.out.print("Enter a name for the big cat to create: ");
+        System.out.print("Please enter the name of the cat to be deleted: ");
         String name = input.nextLine();
         System.out.println();
        
-        // retrieve existing cat names from linked list via loop
-        for (Integer i = 0; i < catList.size(); i++) {
-            catEntry = catList.get(i);
-            catName = catEntry.name();
-       
-            // if cat name matches user input, requests deletion confirmation
-            if (catName.equals(name)) {
+        do {
+        
+            // retrieve existing cat names from linked list via loop
+            for (Integer i = 0; i < catList.size(); i++) {
+                catEntry = catList.get(i);
+                catName = catEntry.name();
+                
+                // if no cat entry has matching name, request alternative name
+                if (catName.equals(name)) {
                            
-                // sets unique name flag to false and requests new name
-                uniqueName = false;
+                    // sets name exists flag to true
+                    nameExists = true;
+
+                    // requests confirmation of delete command
+                    System.out.println("The entry for " + name + " was found.");
+                    System.out.println();
+                    System.out.println("Are you sure you wish to delete? Enter Y or N: ");
+                    userConfirmation = input.next().toLowerCase().charAt(0);
+
+                    // if delete confirmed
+                    if (userConfirmation == 'y')
+                    {
+                        catList.remove(i);
+                    }
+
+                    else if (userConfirmation == 'n')
+                    {
+                        break;
+                    }
+                   
+                }
+            }
+            
+            // loop to request valid name of existing cat
+            if (nameExists == false)
+            {
                 input = new Scanner(System.in);
                 System.out.println();
-                System.out.println("A cat by this name already exists. Please enter a unique name.");
+                System.out.println("No cat by this name was found. Please enter another name or enter quit to exit: ");
                 name = input.nextLine();
             }
-        }
-       
+
+            if(name.equals("quit"))
+            {
+                break;
+            }
+
+        } while (nameExists == false);
     }
 
     public void executeFindCat(LinkedList<Panthera> catList) {
@@ -296,7 +328,7 @@ public class Menu {
         String catName;
 
         // request and store user input
-        System.out.println("Please enter the name of the cat you wish to find.");
+        System.out.println("Please enter the name of the cat you wish to find: ");
         userInput = input.nextLine();
         userInput = userInput.toLowerCase();
 
@@ -309,6 +341,11 @@ public class Menu {
             if (catName.contains(userInput)) {
 
                 System.out.println(cat);
+            }
+
+            else {
+                
+                System.out.println("Sorry, no cat by that name was found.");
             }
         }
 
