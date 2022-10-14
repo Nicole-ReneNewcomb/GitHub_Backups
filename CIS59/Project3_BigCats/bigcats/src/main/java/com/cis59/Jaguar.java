@@ -46,6 +46,8 @@ public class Jaguar extends Panthera {
     public String treeSleeping()
     {
         String treeSleepingString = this.sleepsInTrees ? "yes" : "no";
+        return treeSleepingString;
+        
     }
 
 }

@@ -1,4 +1,4 @@
-package bigcats.src.main.java.com.cis59;
+package com.cis59;
 
 import java.util.*;
 
@@ -141,7 +141,7 @@ public class Menu {
 
         */
 
-        Panthera result;
+        Panthera result = null;
 
         System.out.println("Is this big cat a tiger, lion, or jaguar?");
         String userInput = input.nextLine();
@@ -152,7 +152,9 @@ public class Menu {
 
         while (userInput != "tiger" || userInput != "lion" || userInput != "jaguar")
         {
+            userInput = null;
             System.out.println("Please enter one of the following options: tiger, lion, or jaguar.");
+            userInput = input.nextLine();
         }
 
         if (userInput == "tiger")
