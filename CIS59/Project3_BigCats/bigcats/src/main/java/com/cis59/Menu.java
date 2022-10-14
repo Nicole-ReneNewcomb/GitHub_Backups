@@ -160,7 +160,6 @@ public class Menu {
             System.out.println("Please enter one of the following options - tiger, lion, or jaguar: ");
             userInput = input.nextLine();
             userInput = userInput.toLowerCase();
-            System.out.println(userInput);
         }
 
         // decision tree to create object of user-entered big cat type
@@ -294,12 +293,18 @@ public class Menu {
                     if (userConfirmation == 'y')
                     {
                         catList.remove(i);
+                        System.out.println();
+                        input = new Scanner(System.in);
                     }
 
                     else if (userConfirmation == 'n')
                     {
+                        System.out.println();
+                        input = new Scanner(System.in);
                         break;
                     }
+
+                    
                    
                 }
             }
@@ -311,10 +316,13 @@ public class Menu {
                 System.out.println();
                 System.out.println("No cat by this name was found. Please enter another name or enter quit to exit: ");
                 name = input.nextLine();
+                System.out.println();
             }
 
             if(name.equals("quit"))
             {
+                System.out.println();
+                input = new Scanner(System.in);
                 break;
             }
 
