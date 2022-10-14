@@ -232,10 +232,16 @@ public class Menu {
 
     public void executeDeleteCat(LinkedList<Panthera> catList) {
 
+
     }
 
     public void executeFindCat(LinkedList<Panthera> catList) {
 
+        String userInput;
+
+        System.out.println("Please enter the name of the cat you wish to find.");
+        userInput = input.nextLine();
+        
     }
 
     /*

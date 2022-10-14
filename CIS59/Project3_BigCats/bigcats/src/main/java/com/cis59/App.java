@@ -1,11 +1,10 @@
+/* Nicole-Rene Newcomb's code for CIS59 project 3: Big Cats
+ * Modified from base code provided by Gabriel Solomon */
+
 package com.cis59;
 
 import java.util.*;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
