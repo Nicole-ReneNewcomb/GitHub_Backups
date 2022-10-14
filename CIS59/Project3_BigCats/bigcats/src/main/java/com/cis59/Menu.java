@@ -203,6 +203,21 @@ public class Menu {
             already exists in order to prevent duplicates
         */
 
+        // declare Panthera and string to hold linked list cat entries
+        Panthera cat;
+        String catName;
+
+        // retrieve existing cat names from linked list via loop
+        for (Integer i = 0; i < catList.size(); i++) {
+            cat = catList.get(i);
+            catName = cat.name();
+
+            // if cat name matches user input, prints error message
+            if (catName.equals(name)) {
+
+                System.out.println("A cat by this name already exists. Please enter a unique name.");
+            }
+
         Panthera cat = getNewCat(name);
         catList.add(cat);
 
@@ -238,10 +253,26 @@ public class Menu {
     public void executeFindCat(LinkedList<Panthera> catList) {
 
         String userInput;
+        Panthera cat;
+        String catName;
 
+        // request and store user input
         System.out.println("Please enter the name of the cat you wish to find.");
         userInput = input.nextLine();
-        
+        userInput = userInput.toLowerCase();
+
+        // retrieve cat names from linked list via loop
+        for (Integer i = 0; i < catList.size(); i++) {
+            cat = catList.get(i);
+            catName = cat.name();
+
+            // if cat name matches user input, prints out cat information
+            if (catName.contains(userInput)) {
+
+                System.out.println(cat);
+            }
+        }
+
     }
 
     /*
