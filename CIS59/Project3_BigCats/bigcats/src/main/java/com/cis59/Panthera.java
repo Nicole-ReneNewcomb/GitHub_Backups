@@ -1,4 +1,4 @@
-package com.africanbigcats;
+package com.cis59;
 
 /*
  * Panthera base class that simulates GPS information

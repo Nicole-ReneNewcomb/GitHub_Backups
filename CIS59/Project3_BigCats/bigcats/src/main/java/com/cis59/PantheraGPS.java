@@ -1,4 +1,4 @@
-package com.africanbigcats;
+package com.cis59;
 
 import java.util.Random;
 
