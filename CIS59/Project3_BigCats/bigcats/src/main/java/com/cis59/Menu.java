@@ -80,6 +80,14 @@ public class Menu {
             case 'c':
                 executeCreate(catList);
                 break;
+            
+            case 'd':
+                executeDeleteCat();
+                break;
+
+            case 'f':
+                executeFindCat();
+                break;
 
             case 'l':
                 executeList(catList);
@@ -133,7 +141,37 @@ public class Menu {
 
         */
 
-        Panthera result = new Tiger(name);
+        System.out.println("Is this big cat a tiger, lion, or jaguar?")
+        String userInput = input.nextLine();
+
+        if (userInput.length() > 0) {
+            userInput = rawInput.toLowerCase();
+        }
+
+        while (userInput != "tiger" || userInput != "lion" || userInput != "jaguar")
+        {
+            System.out.println("Please enter one of the following options: tiger, lion, or jaguar.");
+        }
+
+        if (userInput == "tiger")
+        {
+            Panthera result = new Tiger(name);
+        }
+
+        else if (userInupt == "lion")
+        {
+            Panthera result = new Lion(name);
+        }
+
+        else if (userInput == "jaguar")
+        {
+            Panthera result = new Jaguar(name);
+        }
+
+        else
+        {
+            System.out.println("Error: Invalid input. Please be sure to enter tiger, lion, or jaguar only.")
+        }
 
         return result;
 
