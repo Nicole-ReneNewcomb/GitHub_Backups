@@ -82,11 +82,11 @@ public class Menu {
                 break;
             
             case 'd':
-                executeDeleteCat();
+                executeDeleteCat(catList);
                 break;
 
             case 'f':
-                executeFindCat();
+                executeFindCat(catList);
                 break;
 
             case 'l':
@@ -141,15 +141,19 @@ public class Menu {
 
         */
 
+
+        // request user input to determine big cat type
         Panthera result = null;
 
         System.out.println("Is this big cat a tiger, lion, or jaguar?");
         String userInput = input.nextLine();
 
+        // convert input to lowercase
         if (userInput.length() > 0) {
             userInput = userInput.toLowerCase();
         }
 
+        // input validation loop to ensure entries match tiger, lion, or jaguar
         while (!(userInput.equals("tiger") || userInput.equals("lion") || userInput.equals("jaguar")))
         {
             this.input = new Scanner(System.in);
@@ -159,6 +163,7 @@ public class Menu {
             System.out.println(userInput);
         }
 
+        // decision tree to create object of user-entered big cat type
         if (userInput.equals("tiger"))
         {
             result = new Tiger(name);
@@ -225,11 +230,11 @@ public class Menu {
 
     }
 
-    public void executeDeleteCat() {
+    public void executeDeleteCat(LinkedList<Panthera> catList) {
 
     }
 
-    public void executeFindCat() {
+    public void executeFindCat(LinkedList<Panthera> catList) {
 
     }
 
