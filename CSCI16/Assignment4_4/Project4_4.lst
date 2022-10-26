@@ -1,0 +1,78 @@
+Microsoft (R) Macro Assembler Version 14.33.31630.0	    10/24/22 23:46:21
+NRN_Assignment4_4.asm					     Page 1 - 1
+
+
+				; Nicole-Rene Newcomb's code for Assignment4, problem 4
+
+				; Program Description: implements pseudocode example
+				; Author: Nicole-Rene Newcomb
+				; Creation Date: 10/23/2022
+
+				.386
+				.model flat,stdcall
+				.stack 4096
+				ExitProcess PROTO, dwExitCode:DWORD
+
+ 00000000			.data
+ 00000000 00000000		val1 dword ?
+
+ 00000000			.code
+ 00000000			main PROC
+ 00000000  BB 00000005			mov ebx, 5          
+ 00000005  C7 05 00000000 R		mov val1, 20
+	   00000014
+ 0000000F			NRNLoop:
+ 0000000F  3B 1D 00000000 R		cmp ebx, val1
+ 00000015  77 0B			ja False                ; jumps to False (ending loop) if ebx > val1
+ 00000017  83 C3 05			add ebx, 5
+ 0000001A  FF 0D 00000000 R		dec val1
+ 00000020  EB ED			jmp NRNLoop
+ 00000022			False:
+				   INVOKE ExitProcess, 0
+ 00000022  6A 00	   *	    push   +000000000h
+ 00000024  E8 00000000 E   *	    call   ExitProcess
+ 00000029			main ENDP
+				END main
+Microsoft (R) Macro Assembler Version 14.33.31630.0	    10/24/22 23:46:21
+NRN_Assignment4_4.asm					     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+STACK  . . . . . . . . . . . . .	32 Bit	 00001000 DWord	  Stack	  'STACK'	 
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000004 DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000029 DWord	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+ExitProcess  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000029 Public STDCALL
+  NRNLoop  . . . . . . . . . . .	L Near	 0000000F _TEXT	
+  False  . . . . . . . . . . . .	L Near	 00000022 _TEXT	
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+val1 . . . . . . . . . . . . . .	DWord	 00000000 _DATA	
+
+	   0 Warnings
+	   0 Errors

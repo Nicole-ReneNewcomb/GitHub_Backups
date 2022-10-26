@@ -1,0 +1,75 @@
+Microsoft (R) Macro Assembler Version 14.33.31630.0	    10/24/22 23:18:03
+NRN_Assignment4_3.asm					     Page 1 - 1
+
+
+				; Nicole-Rene Newcomb's code for Assignment4, problem 3
+
+				; Program Description: implements pseudocode example
+				; Author: Nicole-Rene Newcomb
+				; Creation Date: 10/23/2022
+
+				.386
+				.model flat,stdcall
+				.stack 4096
+				ExitProcess PROTO, dwExitCode:DWORD
+
+ 00000000			.data
+
+ 00000000			.code
+ 00000000			main PROC
+ 00000000  BB 0000000A			mov ebx, 10          ; tested and short-circuits/jumps if ebx > ecx and/or ecx <= edx
+ 00000005  B9 00000014			mov ecx, 20
+ 0000000A  BA 0000000F			mov edx, 15
+ 0000000F  3B D9			cmp ebx, ecx
+ 00000011  7F 0E			jg False
+ 00000013  3B CA			cmp ecx, edx
+ 00000015  7E 0A			jle False
+ 00000017  B8 00000005			mov eax, 5
+ 0000001C  BA 00000006			mov edx, 6
+ 00000021			False:
+				   INVOKE ExitProcess, 0
+ 00000021  6A 00	   *	    push   +000000000h
+ 00000023  E8 00000000 E   *	    call   ExitProcess
+ 00000028			main ENDP
+				END main
+Microsoft (R) Macro Assembler Version 14.33.31630.0	    10/24/22 23:18:03
+NRN_Assignment4_3.asm					     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+STACK  . . . . . . . . . . . . .	32 Bit	 00001000 DWord	  Stack	  'STACK'	 
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000000 DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000028 DWord	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+ExitProcess  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000028 Public STDCALL
+  False  . . . . . . . . . . . .	L Near	 00000021 _TEXT	
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+
+	   0 Warnings
+	   0 Errors
