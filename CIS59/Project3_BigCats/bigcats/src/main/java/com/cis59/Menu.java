@@ -39,7 +39,6 @@ public class Menu {
         printCommand('w', "[W]arning Report");
         printCommand('q', "[Q]uits");
 
-
         printLine();
 
     }
@@ -280,17 +279,17 @@ public class Menu {
         System.out.print("Please enter the name of the cat to be deleted: ");
         String name = input.nextLine();
         System.out.println();
-       
+
         do {
-        
+
             // retrieve existing cat names from linked list via loop
             for (int i = 0; i < catList.size(); i++) {
                 catEntry = catList.get(i);
                 catName = catEntry.name();
-                
+
                 // if cat entry has matching name
                 if (catName.equals(name)) {
-                           
+
                     // sets name exists flag to true
                     nameExists = true;
 
@@ -301,28 +300,23 @@ public class Menu {
                     userConfirmation = input.next().toLowerCase().charAt(0);
 
                     // if delete confirmed
-                    if (userConfirmation == 'y')
-                    {
+                    if (userConfirmation == 'y') {
                         catList.remove(i);
                         System.out.println();
                         input = new Scanner(System.in);
                     }
 
-                    else if (userConfirmation == 'n')
-                    {
+                    else if (userConfirmation == 'n') {
                         System.out.println();
                         input = new Scanner(System.in);
                         break;
                     }
 
-                    
-                   
                 }
             }
-            
+
             // loop to request valid name of existing cat
-            if (nameExists == false)
-            {
+            if (nameExists == false) {
                 input = new Scanner(System.in);
                 System.out.println();
                 System.out.println("No cat by this name was found. Please enter another name or enter quit to exit: ");
@@ -330,8 +324,7 @@ public class Menu {
                 System.out.println();
             }
 
-            if(name.equals("quit"))
-            {
+            if (name.equals("quit")) {
                 System.out.println();
                 input = new Scanner(System.in);
                 break;
@@ -367,8 +360,7 @@ public class Menu {
         }
 
         // if cat not found, output message to user
-        if (catFound == false)
-        {
+        if (catFound == false) {
             System.out.println("Sorry, no cat by that name was found.");
         }
 
@@ -380,6 +372,7 @@ public class Menu {
      */
 
 }
+
     public void executeRiskReport(LinkedList<Panthera> catList)
     {
         String userInput1;
@@ -390,31 +383,89 @@ public class Menu {
         String catName2;
         boolean catFound1 = false;
         boolean catFound2 = false;
+        double cat1Latitude;
+        double cat1Longitude;
+        double cat2Latitude;
+        double cat2Longitude;
 
         // request and store user input for cat1
         System.out.println("Please enter the name of the first cat: ");
         userInput1 = input.nextLine();
-        userInput1 = userInput.toLowerCase();
+        userInput1 = userInput1.toLowerCase();
 
-        // retrieve cat name from linked list via loop
-        for (Integer i = 0; i < catList.size(); i++) {
-            cat1 = catList.get(i);
-            catName1 = cat1.name();
+        do {
+            // retrieve cat name from linked list via loop
+            for (Integer i = 0; i < catList.size(); i++) {
+                cat1 = catList.get(i);
+                catName1 = cat1.name();
 
-            // if cat name matches user input, locate and store coordinates
-            if (catName.equals(userInput)) {
+                // if cat name matches user input, locate and store coordinates
+                if (catName1.equals(userInput1)) {
 
-                System.out.println(cat);
-                catFound1 = true;
+                    cat1Latitude = cat1.latitude();
+                    cat1Longitude = cat1.longitude();
+                    catFound1 = true;
+                }
+
+                // loop to request valid name of existing cat
+                if (catFound1 == false)
+                {
+                 input = new Scanner(System.in);
+                 System.out.println();
+                 System.out.println("No cat by this name was found. Please enter another name or enter quit to exit: ");
+                 catName1 = input.nextLine();
+                 System.out.println();
+                }
+ 
+                if(catName1.equals("quit"))
+                {
+                    System.out.println();
+                    input = new Scanner(System.in);
+                    break;
+                }
+
             }
+        } while (catFound1 == false);
 
-        }
+        // request and store user input for cat1
+        System.out.println("Please enter the name of the second cat: ");
+        userInput2 = input.nextLine();
+        userInput2 = userInput2.toLowerCase();
 
-        // if cat not found, output message to user
-        if (catFound1 == false)
-        {
-            System.out.println("Sorry, no cat by that name was found.");
-        }
+        do {
+            // retrieve cat name from linked list via loop
+            for (Integer i = 0; i < catList.size(); i++) {
+                cat2 = catList.get(i);
+                catName2 = cat1.name();
+
+                // if cat name matches user input, locate and store coordinates
+                if (catName2.equals(userInput2)) {
+
+                    cat2Latitude = cat2.latitude();
+                    cat2Longitude = cat2.longitude();
+                    catFound2 = true;
+                }
+
+                // loop to request valid name of existing cat
+                if (catFound2 == false)
+                {
+                 input = new Scanner(System.in);
+                 System.out.println();
+                 System.out.println("No cat by this name was found. Please enter another name or enter quit to exit: ");
+                 catName2 = input.nextLine();
+                 System.out.println();
+                }
+ 
+                if(catName2.equals("quit"))
+                {
+                    System.out.println();
+                    input = new Scanner(System.in);
+                    break;
+                }
+
+            }
+        } while (catFound2 == false);
+
     }
 
     public void executeWarning(LinkedList<Panthera> catList)
