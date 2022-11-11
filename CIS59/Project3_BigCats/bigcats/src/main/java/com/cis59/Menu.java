@@ -97,11 +97,11 @@ public class Menu {
                 break;
 
             case 'r':
-                executeRiskReport();
+                executeRiskReport(catList);
                 break;
 
             case 'w':
-                executeWarning();
+                executeWarning(catList);
                 break;
 
             case 'q':
@@ -366,15 +366,7 @@ public class Menu {
 
     }
 
-    /*
-     * TIP:
-     * Additional methods and functionality need to be added to this class.
-     */
-
-}
-
-    public void executeRiskReport(LinkedList<Panthera> catList)
-    {
+    public void executeRiskReport(LinkedList<Panthera> catList) {
         String userInput1;
         String userInput2;
         Panthera cat1;
@@ -387,6 +379,8 @@ public class Menu {
         double cat1Longitude;
         double cat2Latitude;
         double cat2Longitude;
+        double distanceDegrees;
+        double distanceKilometers;
 
         // request and store user input for cat1
         System.out.println("Please enter the name of the first cat: ");
@@ -408,17 +402,16 @@ public class Menu {
                 }
 
                 // loop to request valid name of existing cat
-                if (catFound1 == false)
-                {
-                 input = new Scanner(System.in);
-                 System.out.println();
-                 System.out.println("No cat by this name was found. Please enter another name or enter quit to exit: ");
-                 catName1 = input.nextLine();
-                 System.out.println();
+                if (catFound1 == false) {
+                    input = new Scanner(System.in);
+                    System.out.println();
+                    System.out.println(
+                            "No cat by this name was found. Please enter another name or enter quit to exit: ");
+                    catName1 = input.nextLine();
+                    System.out.println();
                 }
- 
-                if(catName1.equals("quit"))
-                {
+
+                if (catName1.equals("quit")) {
                     System.out.println();
                     input = new Scanner(System.in);
                     break;
@@ -436,7 +429,7 @@ public class Menu {
             // retrieve cat name from linked list via loop
             for (Integer i = 0; i < catList.size(); i++) {
                 cat2 = catList.get(i);
-                catName2 = cat1.name();
+                catName2 = cat2.name();
 
                 // if cat name matches user input, locate and store coordinates
                 if (catName2.equals(userInput2)) {
@@ -447,17 +440,16 @@ public class Menu {
                 }
 
                 // loop to request valid name of existing cat
-                if (catFound2 == false)
-                {
-                 input = new Scanner(System.in);
-                 System.out.println();
-                 System.out.println("No cat by this name was found. Please enter another name or enter quit to exit: ");
-                 catName2 = input.nextLine();
-                 System.out.println();
+                if (catFound2 == false) {
+                    input = new Scanner(System.in);
+                    System.out.println();
+                    System.out.println(
+                            "No cat by this name was found. Please enter another name or enter quit to exit: ");
+                    catName2 = input.nextLine();
+                    System.out.println();
                 }
- 
-                if(catName2.equals("quit"))
-                {
+
+                if (catName2.equals("quit")) {
                     System.out.println();
                     input = new Scanner(System.in);
                     break;
@@ -466,9 +458,19 @@ public class Menu {
             }
         } while (catFound2 == false);
 
+        // calculate distance between two cats
+        distanceDegrees = Math
+                .sqrt(Math.pow((cat2Longitude - cat1Longitude), 2) + Math.pow((cat2Latitude - cat1Latitude), 2));
+        distanceKilometers = distanceDegrees * 111;
+
+        // output distance between the two cats
+        System.out.println(
+                "The distance between these two cats is " + distanceDegrees + " or " + distanceKilometers + " km");
+
     }
 
     public void executeWarning(LinkedList<Panthera> catList)
     {
-
+        System.out.println("Testing");
     }
+}
