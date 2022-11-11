@@ -288,7 +288,7 @@ public class Menu {
                 catEntry = catList.get(i);
                 catName = catEntry.name();
                 
-                // if no cat entry has matching name, request alternative name
+                // if cat entry has matching name
                 if (catName.equals(name)) {
                            
                     // sets name exists flag to true
