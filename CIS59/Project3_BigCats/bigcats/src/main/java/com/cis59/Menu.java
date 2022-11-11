@@ -380,3 +380,12 @@ public class Menu {
      */
 
 }
+    public void executeRiskReport(LinkedList<Panthera> catList)
+    {
+
+    }
+
+    public void executeWarning(LinkedList<Panthera> catList)
+    {
+        
+    }
