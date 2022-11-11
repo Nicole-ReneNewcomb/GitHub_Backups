@@ -382,10 +382,42 @@ public class Menu {
 }
     public void executeRiskReport(LinkedList<Panthera> catList)
     {
+        String userInput1;
+        String userInput2;
+        Panthera cat1;
+        Panthera cat2;
+        String catName1;
+        String catName2;
+        boolean catFound1 = false;
+        boolean catFound2 = false;
 
+        // request and store user input for cat1
+        System.out.println("Please enter the name of the first cat: ");
+        userInput1 = input.nextLine();
+        userInput1 = userInput.toLowerCase();
+
+        // retrieve cat name from linked list via loop
+        for (Integer i = 0; i < catList.size(); i++) {
+            cat1 = catList.get(i);
+            catName1 = cat1.name();
+
+            // if cat name matches user input, locate and store coordinates
+            if (catName.equals(userInput)) {
+
+                System.out.println(cat);
+                catFound1 = true;
+            }
+
+        }
+
+        // if cat not found, output message to user
+        if (catFound1 == false)
+        {
+            System.out.println("Sorry, no cat by that name was found.");
+        }
     }
 
     public void executeWarning(LinkedList<Panthera> catList)
     {
-        
+
     }
