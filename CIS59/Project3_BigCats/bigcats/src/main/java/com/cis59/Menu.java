@@ -375,10 +375,10 @@ public class Menu {
         String catName2;
         boolean catFound1 = false;
         boolean catFound2 = false;
-        double cat1Latitude;
-        double cat1Longitude;
-        double cat2Latitude;
-        double cat2Longitude;
+        double cat1Latitude = 0;
+        double cat1Longitude = 0;
+        double cat2Latitude = 0;
+        double cat2Longitude = 0;
         double distanceDegrees;
         double distanceKilometers;
 
@@ -414,7 +414,7 @@ public class Menu {
                 if (catName1.equals("quit")) {
                     System.out.println();
                     input = new Scanner(System.in);
-                    break;
+                    return;
                 }
 
             }
@@ -452,7 +452,7 @@ public class Menu {
                 if (catName2.equals("quit")) {
                     System.out.println();
                     input = new Scanner(System.in);
-                    break;
+                    return;
                 }
 
             }
