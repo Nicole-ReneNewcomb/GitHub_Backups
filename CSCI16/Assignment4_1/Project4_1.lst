@@ -1,0 +1,82 @@
+Microsoft (R) Macro Assembler Version 14.33.31630.0	    10/25/22 23:14:12
+NRN_Assignment4_1.asm					     Page 1 - 1
+
+
+				; Nicole-Rene Newcomb's code for Assignment4, problem 1
+
+				; Program Description: locates first nonzero value in array
+				; Author: Nicole-Rene Newcomb
+				; Creation Date: 10/23/2022
+
+				.386
+				.model flat,stdcall
+				.stack 4096
+				ExitProcess PROTO, dwExitCode:DWORD
+
+ 00000000			.data
+ 00000000  00000032 [		array SWORD 50 DUP(?)         ; tested with 4 DUP(?), 4, 45 DUP(?) and loop stopped properly
+	    0000
+	   ]
+ 00000064 FFFF			sentinel SWORD 0FFFFh
+
+ 00000000			.code
+ 00000000			main PROC
+ 00000000  BE 00000000 R		mov esi,OFFSET array
+ 00000005  B9 00000032			mov ecx,LENGTHOF array
+ 0000000A  66| 83 3E 00		L1: cmp WORD PTR [esi],0      ; check for zero
+ 0000000E  9C				pushfd
+ 0000000F  83 C6 02			add esi, TYPE array
+ 00000012  9D				popfd
+ 00000013  E1 F5			loopz L1
+ 00000015  74 03			jz quit
+ 00000017  83 EE 02			sub esi, TYPE array
+ 0000001A			quit:
+				   INVOKE ExitProcess, 0
+ 0000001A  6A 00	   *	    push   +000000000h
+ 0000001C  E8 00000000 E   *	    call   ExitProcess
+ 00000021			main ENDP
+				END main
+Microsoft (R) Macro Assembler Version 14.33.31630.0	    10/25/22 23:14:12
+NRN_Assignment4_1.asm					     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+STACK  . . . . . . . . . . . . .	32 Bit	 00001000 DWord	  Stack	  'STACK'	 
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000066 DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 00000021 DWord	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+ExitProcess  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 00000021 Public STDCALL
+  L1 . . . . . . . . . . . . . .	L Near	 0000000A _TEXT	
+  quit . . . . . . . . . . . . .	L Near	 0000001A _TEXT	
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+array  . . . . . . . . . . . . .	Word	 00000000 _DATA	
+sentinel . . . . . . . . . . . .	Word	 00000064 _DATA	
+
+	   0 Warnings
+	   0 Errors

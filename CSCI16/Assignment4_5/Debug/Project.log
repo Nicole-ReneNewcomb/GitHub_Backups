@@ -1,2 +1,12 @@
-﻿  Assembling NRN_Assignment2.asm...
-  Project.vcxproj -> C:\Users\Nicole-Rene\Documents\GitHub\GitHub_Backups\CSCI16\Assignment2\Project32_VS2022\Debug\Project.exe
+﻿  Assembling NRN_Assignment4_5.asm...
+NRN_Assignment4_5.asm(62): error A2022: instruction operands must be the same size
+NRN_Assignment4_5.asm(69): error A2022: instruction operands must be the same size
+NRN_Assignment4_5.asm(76): error A2022: instruction operands must be the same size
+NRN_Assignment4_5.asm(83): error A2022: instruction operands must be the same size
+NRN_Assignment4_5.asm(90): error A2022: instruction operands must be the same size
+NRN_Assignment4_5.asm(22): error A2084: constant value too large
+NRN_Assignment4_5.asm(23): error A2084: constant value too large
+NRN_Assignment4_5.asm(24): error A2084: constant value too large
+NRN_Assignment4_5.asm(25): error A2084: constant value too large
+NRN_Assignment4_5.asm(26): error A2084: constant value too large
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\masm.targets(70,5): error MSB3721: The command "ml.exe /c /nologo /Sg /Zi /Fo"Debug\NRN_Assignment4_5.obj" /Fl"Project4_5.lst" /I "c:\Irvine" /W3 /errorReport:prompt  /TaNRN_Assignment4_5.asm" exited with code 1.
