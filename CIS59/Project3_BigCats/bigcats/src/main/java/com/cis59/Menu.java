@@ -97,6 +97,14 @@ public class Menu {
                 executeList(catList);
                 break;
 
+            case 'r':
+                executeRiskReport();
+                break;
+
+            case 'w':
+                executeWarning();
+                break;
+
             case 'q':
                 executeQuit();
                 break;
