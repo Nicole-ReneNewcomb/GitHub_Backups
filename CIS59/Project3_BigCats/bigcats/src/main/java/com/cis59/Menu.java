@@ -402,7 +402,7 @@ public class Menu {
                 }
             }    
 
-                // loop to request valid name of existing cat
+                // input validation - request valid name of existing cat
                 if (catFound1 == false) {
                     System.out.println();
                     System.out.println(
@@ -439,7 +439,7 @@ public class Menu {
                 }
             }    
 
-                // loop to request valid name of existing cat
+                // input validation - request valid name of existing cat
                 if (catFound2 == false) {
                     System.out.println();
                     System.out.println(
@@ -468,7 +468,33 @@ public class Menu {
     }
 
     public void executeWarning(LinkedList<Panthera> catList)
-    {
-        System.out.println("Testing");
+    {   
+        Panthera closestCat;
+        double catDistance;
+        double userLatitude;
+        double userLongitude;
+
+        // request and store user input for user's latitude
+        System.out.println("Please enter your current latitude, ex. ");
+        userLatitude = input.nextDouble();
+
+        // request and store user input for user's longitude
+        System.out.println("Please enter your current longitude, ex. ");
+        userLongitude = input.nextDouble();
+
+        for (Integer i = 0; i < catList.size(); i++) {
+            cat1 = catList.get(i);
+            catName1 = cat1.name();
+
+            // if cat name matches user input, locate and store coordinates
+            if (catName1.equals(userInput1)) {
+
+                cat1Latitude = cat1.latitude();
+                cat1Longitude = cat1.longitude();
+                catFound1 = true;
+            }
+        }   
+
+
     }
 }
