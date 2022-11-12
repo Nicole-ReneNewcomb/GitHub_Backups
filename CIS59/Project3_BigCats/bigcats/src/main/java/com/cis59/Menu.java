@@ -473,9 +473,10 @@ public class Menu {
         double catLongitude;
         double catDistance;
         double closestDistance = -1;
+        double closestDistanceKilometers;
         double userLatitude;
         double userLongitude;
-        int catIndex;
+        int catIndex = -1;
 
         // request and store user input for user's latitude
         System.out.println("Please enter your current latitude, ex. ");
@@ -485,19 +486,31 @@ public class Menu {
         System.out.println("Please enter your current longitude, ex. ");
         userLongitude = input.nextDouble();
 
+        // loop through cat list to check distance from user
         for (Integer i = 0; i < catList.size(); i++) {
             closestCat = catList.get(i);
             catLatitude = closestCat.latitude();
             catLongitude = closestCat.longitude();
             catDistance = Math.sqrt(Math.pow((catLongitude - userLongitude), 2) + Math.pow((catLatitude - userLatitude), 2));
 
+            // replace values with values for cat at shortest distance
             if (closestDistance == -1 || catDistance < closestDistance)
             {
                 closestDistance = catDistance;
                 catIndex = i;
             }
-        }   
+        }
 
+        // use index to identify closest cat
+        closestCat = catList.get(catIndex);
 
+        // calculate kilometer value from degrees distance
+        closestDistanceKilometers = closestDistance * 111;
+
+        // output distance of cat from user's location
+        System.out.printf("The closest cat to your position is %.2f degrees or %.2f km away\n", closestDistance, closestDistanceKilometers);
+
+        // output information about closest cat
+        System.out.println(closestCat);
     }
 }
