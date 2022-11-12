@@ -371,8 +371,8 @@ public class Menu {
         String userInput2;
         Panthera cat1;
         Panthera cat2;
-        String catName1;
-        String catName2;
+        String catName1 = null;
+        String catName2 = null;
         boolean catFound1 = false;
         boolean catFound2 = false;
         double cat1Latitude = 0;
@@ -383,6 +383,7 @@ public class Menu {
         double distanceKilometers;
 
         // request and store user input for cat1
+        input = new Scanner(System.in);
         System.out.println("Please enter the name of the first cat: ");
         userInput1 = input.nextLine();
         userInput1 = userInput1.toLowerCase();
@@ -400,6 +401,7 @@ public class Menu {
                     cat1Longitude = cat1.longitude();
                     catFound1 = true;
                 }
+            }    
 
                 // loop to request valid name of existing cat
                 if (catFound1 == false) {
@@ -417,10 +419,10 @@ public class Menu {
                     return;
                 }
 
-            }
         } while (catFound1 == false);
 
         // request and store user input for cat1
+        input = new Scanner(System.in);
         System.out.println("Please enter the name of the second cat: ");
         userInput2 = input.nextLine();
         userInput2 = userInput2.toLowerCase();
@@ -438,6 +440,7 @@ public class Menu {
                     cat2Longitude = cat2.longitude();
                     catFound2 = true;
                 }
+            }    
 
                 // loop to request valid name of existing cat
                 if (catFound2 == false) {
@@ -455,7 +458,6 @@ public class Menu {
                     return;
                 }
 
-            }
         } while (catFound2 == false);
 
         // calculate distance between two cats
@@ -464,8 +466,8 @@ public class Menu {
         distanceKilometers = distanceDegrees * 111;
 
         // output distance between the two cats
-        System.out.println(
-                "The distance between these two cats is " + distanceDegrees + " or " + distanceKilometers + " km");
+        System.out.printf(
+                "The distance between these two cats is %.2f degrees or %.2f km", distanceDegrees, distanceKilometers);
 
     }
 
