@@ -457,8 +457,7 @@ public class Menu {
         } while (catFound2 == false);
 
         // calculate distance between two cats
-        distanceDegrees = Math
-                .sqrt(Math.pow((cat2Longitude - cat1Longitude), 2) + Math.pow((cat2Latitude - cat1Latitude), 2));
+        distanceDegrees = Math.sqrt(Math.pow((cat2Longitude - cat1Longitude), 2) + Math.pow((cat2Latitude - cat1Latitude), 2));
         distanceKilometers = distanceDegrees * 111;
 
         // output distance between the two cats
@@ -470,9 +469,13 @@ public class Menu {
     public void executeWarning(LinkedList<Panthera> catList)
     {   
         Panthera closestCat;
+        double catLatitude;
+        double catLongitude;
         double catDistance;
+        double closestDistance = -1;
         double userLatitude;
         double userLongitude;
+        int catIndex;
 
         // request and store user input for user's latitude
         System.out.println("Please enter your current latitude, ex. ");
@@ -483,15 +486,15 @@ public class Menu {
         userLongitude = input.nextDouble();
 
         for (Integer i = 0; i < catList.size(); i++) {
-            cat1 = catList.get(i);
-            catName1 = cat1.name();
+            closestCat = catList.get(i);
+            catLatitude = closestCat.latitude();
+            catLongitude = closestCat.longitude();
+            catDistance = Math.sqrt(Math.pow((catLongitude - userLongitude), 2) + Math.pow((catLatitude - userLatitude), 2));
 
-            // if cat name matches user input, locate and store coordinates
-            if (catName1.equals(userInput1)) {
-
-                cat1Latitude = cat1.latitude();
-                cat1Longitude = cat1.longitude();
-                catFound1 = true;
+            if (closestDistance == -1 || catDistance < closestDistance)
+            {
+                closestDistance = catDistance;
+                catIndex = i;
             }
         }   
 
