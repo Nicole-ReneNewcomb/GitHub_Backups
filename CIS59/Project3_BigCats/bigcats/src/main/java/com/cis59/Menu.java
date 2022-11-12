@@ -383,7 +383,6 @@ public class Menu {
         double distanceKilometers;
 
         // request and store user input for cat1
-        input = new Scanner(System.in);
         System.out.println("Please enter the name of the first cat: ");
         userInput1 = input.nextLine();
         userInput1 = userInput1.toLowerCase();
@@ -405,15 +404,14 @@ public class Menu {
 
                 // loop to request valid name of existing cat
                 if (catFound1 == false) {
-                    input = new Scanner(System.in);
                     System.out.println();
                     System.out.println(
                             "No cat by this name was found. Please enter another name or enter quit to exit: ");
-                    catName1 = input.nextLine();
+                    userInput1 = input.nextLine();
                     System.out.println();
                 }
 
-                if (catName1.equals("quit")) {
+                if (userInput1.equals("quit")) {
                     System.out.println();
                     input = new Scanner(System.in);
                     return;
@@ -421,8 +419,7 @@ public class Menu {
 
         } while (catFound1 == false);
 
-        // request and store user input for cat1
-        input = new Scanner(System.in);
+        // request and store user input for cat2
         System.out.println("Please enter the name of the second cat: ");
         userInput2 = input.nextLine();
         userInput2 = userInput2.toLowerCase();
@@ -444,15 +441,14 @@ public class Menu {
 
                 // loop to request valid name of existing cat
                 if (catFound2 == false) {
-                    input = new Scanner(System.in);
                     System.out.println();
                     System.out.println(
                             "No cat by this name was found. Please enter another name or enter quit to exit: ");
-                    catName2 = input.nextLine();
+                    userInput2 = input.nextLine();
                     System.out.println();
                 }
 
-                if (catName2.equals("quit")) {
+                if (userInput2.equals("quit")) {
                     System.out.println();
                     input = new Scanner(System.in);
                     return;
@@ -467,7 +463,7 @@ public class Menu {
 
         // output distance between the two cats
         System.out.printf(
-                "The distance between these two cats is %.2f degrees or %.2f km", distanceDegrees, distanceKilometers);
+                "The distance between these two cats is %.2f degrees or %.2f km\n\n", distanceDegrees, distanceKilometers);
 
     }
 
