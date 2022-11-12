@@ -223,7 +223,7 @@ public class Menu {
             // retrieve existing cat names from linked list via loop
             for (Integer i = 0; i < catList.size(); i++) {
                 catEntry = catList.get(i);
-                catName = catEntry.name();
+                catName = catEntry.name().toLowerCase();
 
                 // if cat name matches user input, prints error message
                 if (catName.equals(name)) {
@@ -277,7 +277,7 @@ public class Menu {
         // request user input to select name of cat for deletion
         System.out.println();
         System.out.print("Please enter the name of the cat to be deleted: ");
-        String name = input.nextLine();
+        String name = input.nextLine().toLowerCase();
         System.out.println();
 
         do {
@@ -285,7 +285,7 @@ public class Menu {
             // retrieve existing cat names from linked list via loop
             for (int i = 0; i < catList.size(); i++) {
                 catEntry = catList.get(i);
-                catName = catEntry.name();
+                catName = catEntry.name().toLowerCase();
 
                 // if cat entry has matching name
                 if (catName.equals(name)) {
@@ -320,7 +320,7 @@ public class Menu {
                 input = new Scanner(System.in);
                 System.out.println();
                 System.out.println("No cat by this name was found. Please enter another name or enter quit to exit: ");
-                name = input.nextLine();
+                name = input.nextLine().toLowerCase();
                 System.out.println();
             }
 
@@ -342,13 +342,12 @@ public class Menu {
 
         // request and store user input
         System.out.println("Please enter the name of the cat you wish to find: ");
-        userInput = input.nextLine();
-        userInput = userInput.toLowerCase();
+        userInput = input.nextLine().toLowerCase();
 
         // retrieve cat names from linked list via loop
         for (Integer i = 0; i < catList.size(); i++) {
             cat = catList.get(i);
-            catName = cat.name();
+            catName = cat.name().toLowerCase();
 
             // if cat name matches user input, prints out cat information
             if (catName.contains(userInput)) {
@@ -384,14 +383,14 @@ public class Menu {
 
         // request and store user input for cat1
         System.out.println("Please enter the name of the first cat: ");
-        userInput1 = input.nextLine();
-        userInput1 = userInput1.toLowerCase();
+        userInput1 = input.nextLine().toLowerCase();
+        System.out.println();
 
         do {
             // retrieve cat name from linked list via loop
             for (Integer i = 0; i < catList.size(); i++) {
                 cat1 = catList.get(i);
-                catName1 = cat1.name();
+                catName1 = cat1.name().toLowerCase();
 
                 // if cat name matches user input, locate and store coordinates
                 if (catName1.equals(userInput1)) {
@@ -407,7 +406,7 @@ public class Menu {
                     System.out.println();
                     System.out.println(
                             "No cat by this name was found. Please enter another name or enter quit to exit: ");
-                    userInput1 = input.nextLine();
+                    userInput1 = input.nextLine().toLowerCase();
                     System.out.println();
                 }
 
@@ -421,14 +420,14 @@ public class Menu {
 
         // request and store user input for cat2
         System.out.println("Please enter the name of the second cat: ");
-        userInput2 = input.nextLine();
-        userInput2 = userInput2.toLowerCase();
+        userInput2 = input.nextLine().toLowerCase();
+        System.out.println();
 
         do {
             // retrieve cat name from linked list via loop
             for (Integer i = 0; i < catList.size(); i++) {
                 cat2 = catList.get(i);
-                catName2 = cat2.name();
+                catName2 = cat2.name().toLowerCase();
 
                 // if cat name matches user input, locate and store coordinates
                 if (catName2.equals(userInput2)) {
@@ -444,7 +443,7 @@ public class Menu {
                     System.out.println();
                     System.out.println(
                             "No cat by this name was found. Please enter another name or enter quit to exit: ");
-                    userInput2 = input.nextLine();
+                    userInput2 = input.nextLine().toLowerCase();
                     System.out.println();
                 }
 
@@ -462,7 +461,7 @@ public class Menu {
 
         // output distance between the two cats
         System.out.printf(
-                "The distance between these two cats is %.2f degrees or %.2f km\n\n", distanceDegrees, distanceKilometers);
+                "\nThe distance between these two cats is %.2f degrees or %.2f km\n\n", distanceDegrees, distanceKilometers);
 
     }
 
@@ -479,12 +478,14 @@ public class Menu {
         int catIndex = -1;
 
         // request and store user input for user's latitude
-        System.out.println("Please enter your current latitude, ex. ");
+        System.out.println("Please enter your current latitude, ex. 755.2");
         userLatitude = input.nextDouble();
+        System.out.println();
 
         // request and store user input for user's longitude
-        System.out.println("Please enter your current longitude, ex. ");
+        System.out.println("Please enter your current longitude, ex. 766.8");
         userLongitude = input.nextDouble();
+        System.out.println();
 
         // loop through cat list to check distance from user
         for (Integer i = 0; i < catList.size(); i++) {
@@ -508,9 +509,13 @@ public class Menu {
         closestDistanceKilometers = closestDistance * 111;
 
         // output distance of cat from user's location
-        System.out.printf("The closest cat to your position is %.2f degrees or %.2f km away\n", closestDistance, closestDistanceKilometers);
+        System.out.printf("\n\nThe closest cat to your position is %.2f degrees or %.2f km away\n\n", closestDistance, closestDistanceKilometers);
 
         // output information about closest cat
         System.out.println(closestCat);
+        System.out.println();
+
+        // reset scanner for return to menu
+        input = new Scanner(System.in);
     }
 }
