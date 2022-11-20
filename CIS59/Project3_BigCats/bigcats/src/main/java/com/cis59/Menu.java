@@ -199,7 +199,7 @@ public class Menu {
         // get the name
         System.out.println();
         System.out.print("Enter a name for the big cat to create: ");
-        String name = input.nextLine();
+        String name = input.nextLine().toLowerCase();
         System.out.println();
 
         /*
@@ -233,7 +233,7 @@ public class Menu {
                     input = new Scanner(System.in);
                     System.out.println();
                     System.out.println("A cat by this name already exists. Please enter a unique name: ");
-                    name = input.nextLine();
+                    name = input.nextLine().toLowerCase();
                 }
             }
 
