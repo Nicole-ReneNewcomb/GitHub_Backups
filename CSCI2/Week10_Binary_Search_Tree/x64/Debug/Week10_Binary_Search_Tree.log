@@ -1,0 +1,9 @@
+﻿  bst.cpp
+C:\Users\Nicole-Rene\Documents\GitHub\GitHub_Backups\CSCI2\Week10_Binary_Search_Tree\bst.cpp(180,12): error C2228: left of '.getValue' must have class/struct/union
+C:\Users\Nicole-Rene\Documents\GitHub\GitHub_Backups\CSCI2\Week10_Binary_Search_Tree\bst.cpp(180,12): message : type is 'Node *'
+C:\Users\Nicole-Rene\Documents\GitHub\GitHub_Backups\CSCI2\Week10_Binary_Search_Tree\bst.cpp(180,12): message : did you intend to use '->' instead?
+  main.cpp
+C:\Users\Nicole-Rene\Documents\GitHub\GitHub_Backups\CSCI2\Week10_Binary_Search_Tree\main.cpp(20,43): error C2664: 'Node *BST::findCommonAncestor(Node *,Node *,Node)': cannot convert argument 1 from 'int' to 'Node *'
+C:\Users\Nicole-Rene\Documents\GitHub\GitHub_Backups\CSCI2\Week10_Binary_Search_Tree\main.cpp(20,34): message : Conversion from integral type to pointer type requires reinterpret_cast, C-style cast or parenthesized function-style cast
+C:\Users\Nicole-Rene\Documents\GitHub\GitHub_Backups\CSCI2\Week10_Binary_Search_Tree\bst.hpp(18,8): message : see declaration of 'BST::findCommonAncestor'
+  Generating Code...
