@@ -1,0 +1,3 @@
+﻿  Assembling NRN_Extra_Credit.asm...
+NRN_Extra_Credit.asm(38): fatal error A1010: unmatched block nesting : main
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\masm.targets(70,5): error MSB3721: The command "ml.exe /c /nologo /Sg /Zi /Fo"Debug\NRN_Extra_Credit.obj" /Fl"Project_Extra_Credit.lst" /I "c:\Irvine" /W3 /errorReport:prompt  /TaNRN_Extra_Credit.asm" exited with code 1.

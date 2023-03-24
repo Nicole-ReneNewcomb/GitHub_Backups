@@ -1,0 +1,10 @@
+﻿  Assembling MASM.asm...
+MASM.asm(20): error A2008: syntax error : arg
+MASM.asm(21): error A2008: syntax error : INVOKE
+MASM.asm(22): error A2008: syntax error : arg
+MASM.asm(23): error A2008: syntax error : ADDR
+MASM.asm(24): error A2008: syntax error : INVOKE
+MASM.asm(28): error A2008: syntax error : INVOKE
+MASM.asm(29): error A2008: syntax error : start
+MASM.asm(29): error A2088: END directive required at end of file
+C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\BuildCustomizations\masm.targets(70,5): error MSB3721: The command "ml64.exe /c /nologo /Zi /Fo"x64\Debug\MASM.obj" /W3 /errorReport:prompt  /TaMASM.asm" exited with code 1.

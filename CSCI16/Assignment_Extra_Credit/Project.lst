@@ -1,0 +1,86 @@
+Microsoft (R) Macro Assembler Version 14.33.31630.0	    09/27/22 00:12:30
+NRN_Assignment2.asm					     Page 1 - 1
+
+
+				; Nicole-Rene Newcomb's code for Assignment2
+
+				; Program Description: Calculates result1 & result2 from x & y, where x = 1000h,
+				;	 y = 2000h, result1 = (X - Y) + (X + Y), & result2 = result1 - (X + Y) 
+				; Author: Nicole-Rene Newcomb
+				; Creation Date: 09/26/2022
+
+				.386
+				.model flat,stdcall
+				.stack 4096
+				ExitProcess PROTO, dwExitCode:DWORD
+
+ 00000000			.data
+ 00000000 00001000		x DWORD 1000h
+ 00000004 00002000		y DWORD 2000h
+ 00000008 00000000		result1 DWORD ?
+ 0000000C 00000000		result2 DWORD ?
+
+ 00000000			.code
+ 00000000			main PROC
+ 00000000  A1 00000000 R	   mov eax, x            ; set eax = x = 1000h
+ 00000005  2B 05 00000004 R	   sub eax, y            ; subtract value of y from eax, eax -= y
+ 0000000B  8B 1D 00000000 R	   mov ebx, x            ; set ebx = x = 1000h
+ 00000011  03 1D 00000004 R	   add ebx, y            ; add value of y to ebx, ebx += y
+ 00000017  03 C3		   add eax, ebx          ; eax += ebx
+ 00000019  A3 00000008 R	   mov result1, eax      ; set result1 = eax, which equals (X - Y) + (X + Y)
+ 0000001E  8B 1D 00000000 R	   mov ebx, x            ; set ebx = x = 1000h
+ 00000024  03 1D 00000004 R	   add ebx, y            ; add value of y to ebx, ebx += y
+ 0000002A  2B C3		   sub eax, ebx          ; eax -= ebx
+ 0000002C  A3 0000000C R	   mov result2, eax      ; set result2 = eax, which equals result1 - (X + Y)
+ 00000031  8B 0D 00000008 R	  mov ecx, result1      ; confirms result1 = 2000h by moving it to ecx
+ 00000037  8B 15 0000000C R	  mov edx, result2      ; confirms result2 = -1000h (negative hex value notation) by moving it to edx
+ 0000003D  81 C2 00001000	  add edx, 1000h        ; confirms result2 + 1000h = 0 to ensure proper negative hex value stored
+				   INVOKE ExitProcess, 0
+ 00000043  6A 00	   *	    push   +000000000h
+ 00000045  E8 00000000 E   *	    call   ExitProcess
+ 0000004A			main ENDP
+				END main
+Microsoft (R) Macro Assembler Version 14.33.31630.0	    09/27/22 00:12:30
+NRN_Assignment2.asm					     Symbols 2 - 1
+
+
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+STACK  . . . . . . . . . . . . .	32 Bit	 00001000 DWord	  Stack	  'STACK'	 
+_DATA  . . . . . . . . . . . . .	32 Bit	 00000010 DWord	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 0000004A DWord	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+ExitProcess  . . . . . . . . . .	P Near	 00000000 FLAT	Length= 00000000 External STDCALL
+main . . . . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 0000004A Public STDCALL
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000003h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+result1  . . . . . . . . . . . .	DWord	 00000008 _DATA	
+result2  . . . . . . . . . . . .	DWord	 0000000C _DATA	
+x  . . . . . . . . . . . . . . .	DWord	 00000000 _DATA	
+y  . . . . . . . . . . . . . . .	DWord	 00000004 _DATA	
+
+	   0 Warnings
+	   0 Errors
