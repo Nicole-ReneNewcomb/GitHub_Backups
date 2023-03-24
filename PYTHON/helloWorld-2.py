@@ -1,5 +1,6 @@
 """
     Nicole-Rene's Implementation of Hello World Sample Program
+    Successfully outputs current version of Python and "Hello World"
     This is the hello world program in python
 """
 import sys
