@@ -12,3 +12,5 @@ print()
 
 # print hello world
 print("Hello World")
+
+print(8/3)
