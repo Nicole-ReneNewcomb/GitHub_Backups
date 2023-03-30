@@ -5,6 +5,7 @@ import os.path
 import json
 
 # Using os.path library function to determine current directory
+# Useful for when program may run on different machines or OS
 filePath = os.path.join(os.path.dirname(__file__), "4_birthday.json")
 
 
@@ -12,11 +13,11 @@ filePath = os.path.join(os.path.dirname(__file__), "4_birthday.json")
 try:
     jsonFile = open(filePath, 'r')
 except OSError:
-    print("ERROR: Unable to open the file %s" % pathToFile)
+    print("ERROR: Unable to open the file %s" % filePath)
     exit(-1)
 
 
-# Read the whole json file into a variable
+# Read the whole json file into a variable (List type)
 birthdayList = json.load(jsonFile)
 
 # Create an empty dictionary
@@ -29,15 +30,22 @@ for elem in birthdayList:
     name = elem["name"]
     birthday = elem["birthday"]
 
-    print("name = " + name)
-    print("birthday = " + birthday)
-
+    # Add each name: birthday to dictionary as key-value pairs
     birthdayDictionary[name] = birthday
 
 
-# To print a value in the dictionary by giving it a string with the name as the key
-print("Jocelyn Jones's birthday is: " + birthdayDictionary["Jocelyn Jones"])
+# Get user input for name to lookup
+name = input("Enter a name: ")
 
-# To get user input
-name = input("Enter a name:")
-print("name = " + name)
+# Create Lookup dictionary
+lookupDictionary = {}
+
+# Lookup matching names from dictionary
+for key in birthdayDictionary:
+    if name in key:
+        print(key + "'s birthday is: " + birthdayDictionary[key])
+    else:
+        print("No match found.")
+
+# To print a value in the dictionary by giving it a string with the name as the key
+print("'s birthday is: " + birthdayDictionary["Jocelyn Jones"])
