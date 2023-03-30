@@ -46,7 +46,7 @@ while nameValid == False:
 
 
 # Output lookup header
-print("\nHere are the names and birthdays of matching friends: ")
+print('\nHere are all friends whose name included "' + name + '": ')
 print("======================================================")
 print("{:<40}{:<20}".format("Name", "Birthday"))
 print("======================================================")
