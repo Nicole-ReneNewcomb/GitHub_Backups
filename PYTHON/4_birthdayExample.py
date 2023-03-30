@@ -44,17 +44,20 @@ while nameValid == False:
     else:
         print("\nPlease enter letters only.")
 
+
+# Output lookup header
+print("\nHere are the names and birthdays of matching friends: ")
+print("======================================================")
+print("{:<40}{:<20}".format("Name", "Birthday"))
+print("======================================================")
+
 # Create boolean to indicate if name found in dictionary
 nameFound = False
 
 # Lookup matching names from dictionary keys
 for key in birthdayDictionary:
     if name in key.lower():
-        print("Here are the names and birthdays of matching friends: ")
-        print("======================================================")
-        print("Name                          Birthday")
-        print("======================================================")
-        print(key + "'s birthday is: " + birthdayDictionary[key])
+        print("{:<40}{:<20}".format(key, birthdayDictionary[key]))
         nameFound = True
 
 # If name not found within dictionary keys
