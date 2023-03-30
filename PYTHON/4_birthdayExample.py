@@ -16,16 +16,16 @@ except OSError:
     exit(-1)
 
 
-# read the whole json file into a variable
+# Read the whole json file into a variable
 birthdayList = json.load(jsonFile)
 
-# create an empty dictionary
+# Create an empty dictionary
 birthdayDictionary = {}
 
-# loop json list of data and put each name and birthday into a dictionary
+# Loop json list of data and put each name and birthday into a dictionary
 for elem in birthdayList:
 
-    # fetch name and birthday
+    # Fetch name and birthday
     name = elem["name"]
     birthday = elem["birthday"]
 
@@ -35,9 +35,9 @@ for elem in birthdayList:
     birthdayDictionary[name] = birthday
 
 
-# to print a value in the dictionary by giving it a string with the name as the key
+# To print a value in the dictionary by giving it a string with the name as the key
 print("Jocelyn Jones's birthday is: " + birthdayDictionary["Jocelyn Jones"])
 
-# to get user input
+# To get user input
 name = input("Enter a name:")
 print("name = " + name)
