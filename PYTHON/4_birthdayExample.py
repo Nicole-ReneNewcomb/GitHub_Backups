@@ -5,7 +5,7 @@ import os.path
 import json
 
 # Using os.path library function to determine current directory
-# Useful for when program may run on different machines or OS
+# Useful for when program may run on different computers or VMs
 filePath = os.path.join(os.path.dirname(__file__), "4_birthday.json")
 
 
@@ -46,10 +46,10 @@ while nameValid == False:
 
 
 # Output lookup header
-print('\nHere are all friends whose name included "' + name + '": ')
-print("======================================================")
-print("{:<40}{:<20}".format("Name", "Birthday"))
-print("======================================================")
+print('\n\nHere are all friends whose names include "' + name + '": ')
+print("================================================")
+print("{:<30}{:<20}".format("Name", "Birthday"))
+print("================================================")
 
 # Create boolean to indicate if name found in dictionary
 nameFound = False
@@ -57,9 +57,13 @@ nameFound = False
 # Lookup matching names from dictionary keys
 for key in birthdayDictionary:
     if name in key.lower():
-        print("{:<40}{:<20}".format(key, birthdayDictionary[key]))
+        print("{:<30}{:<20}".format(key, birthdayDictionary[key]))
         nameFound = True
 
-# If name not found within dictionary keys
-if nameFound == False:
-    print("No match found.")
+# If name was found, output new lines for spacing
+if nameFound == True:
+    print("\n\n")
+
+# If name not found within dictionary keys, output message
+elif nameFound == False:
+    print("\nSorry, no matching friends found.\n\n")
