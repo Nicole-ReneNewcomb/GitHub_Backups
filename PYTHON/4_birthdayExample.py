@@ -33,19 +33,26 @@ for elem in birthdayList:
     # Add each name: birthday to dictionary as key-value pairs
     birthdayDictionary[name] = birthday
 
+# Create boolean to indicate if user input is valid
+nameValid = False
 
-# Get user input for name to lookup
-name = input("Enter a name: ")
-
-# Create Lookup dictionary
-lookupDictionary = {}
-
-# Lookup matching names from dictionary
-for key in birthdayDictionary:
-    if name in key:
-        print(key + "'s birthday is: " + birthdayDictionary[key])
+# Get user input for name to lookup & validate input
+while nameValid == False:
+    name = input("\nEnter a name: ").lower()
+    if name.isalpha():
+        nameValid = True
     else:
-        print("No match found.")
+        print("\nPlease enter letters only.")
 
-# To print a value in the dictionary by giving it a string with the name as the key
-print("'s birthday is: " + birthdayDictionary["Jocelyn Jones"])
+# Create boolean to indicate if name found in dictionary
+nameFound = False
+
+# Lookup matching names from dictionary keys
+for key in birthdayDictionary:
+    if name in key.lower():
+        print(key + "'s birthday is: " + birthdayDictionary[key])
+        nameFound = True
+
+# If name not found within dictionary keys
+if nameFound == False:
+    print("No match found.")
