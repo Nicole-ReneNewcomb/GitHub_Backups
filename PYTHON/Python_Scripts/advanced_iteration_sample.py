@@ -3,7 +3,9 @@
 # File named contains.py : script takes word and searches/returns all matching values
 # Searches for matching values in separate dictionary text file
 
-import argparse 
+import os.path
+import argparse
+
 parser = argparse.ArgumentParser(description='Search for words including partial word') 
 parser.add_argument('snippet', help='partial (or complete) string to search for in words')
 args = parser.parse_args() 
@@ -16,7 +18,7 @@ snippet = args.snippet.lower()
         #matches.append(word)
 
 #Alternative way to find matches and output results
-words = open('/usr/share/dict/words').readlines()
+words = open(os.path.join(os.path.dirname(__file__), "words")).readlines()
 matches = [word.strip() for word in words if snippet in word.lower()] 
 print(matches)
 #Alternative if not needing to store list in matches; just prints instead of assigning to matches

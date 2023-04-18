@@ -1,0 +1,431 @@
+Building a Web Application with Python and Flask
+Introduction
+Python is a great language for web development and the community has built fantastic tools to make the process enjoyable. In this hands-on lab, we're going to build a web application using the Python web framework, Flask. Our application will present a JSON API and also render views with information coming from a PostgreSQL database. By the time we've finished, we'll have seen some of the power that Python provides when being used for web development.
+
+Solution
+Log in to the Workstation lab server using the credentials provided on the hands-on lab page:
+
+ssh cloud_user@PUBLIC_IP_ADDRESS
+Note: When copying and pasting code into Vim from the lab guide, first enter :set paste (and then i to enter insert mode) to avoid adding unnecessary spaces and hashes.
+
+Create project and virtualenv
+Create a tickets directory to hold onto our project:
+
+mkdir tickets
+cd tickets
+Create our Virtualenv and install some dependencies:
+
+pipenv --python=$(which python3.7) install flask
+Activate our Virtualenv:
+
+pipenv shell
+Configure application and connect to the database
+Create the __init__.py file, which will generate our application:
+
+vim ~/tickets/__init__.py
+Provide the following contents:
+
+import os
+
+from flask import Flask
+
+def create_app(test_config=None):
+    app = Flask(__name__)
+    app.config.from_mapping(
+        SECRET_KEY=os.environ.get('SECRET_KEY', default='dev'),
+    )
+
+    if test_config is None:
+        app.config.from_pyfile('config.py', silent=True)
+    else:
+        app.config.from_mapping(test_config)
+
+    return app
+Save and quit the file.
+
+In a new terminal window, log in to the Workstation lab server:
+
+ssh cloud_user@PUBLIC_IP_ADDRESS
+Change directories to tickets:
+
+cd tickets/
+Use our Virtualenv:
+
+pipenv shell
+Test the bare-bones application with the following commands:
+
+export FLASK_ENV=development
+export FLASK_APP='.'
+flask run --host=0.0.0.0 --port=3000
+Output from this command should look like this:
+
+ * Serving Flask app "." (lazy loading)
+ * Environment: development
+ * Debug mode: on
+ * Running on http://0.0.0.0:3000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 112-739-965
+Note: Leave this command running and switch back to the first terminal window to continue.
+
+Back in the first terminal window, install psycopg2 and the Flask-SQLAlchemy plugin:
+
+pipenv install psycopg2 Flask-SQLAlchemy
+Output from this command will look like this:
+
+Installing psycopg2…
+Adding psycopg2 to Pipfile's [packages]…
+✔ Installation Succeeded
+Installing Flask-SQLAlchemy…
+Adding Flask-SQLAlchemy to Pipfile's [packages]…
+✔ Installation Succeeded
+Pipfile.lock (caf66b) out of date, updating to (662286)…
+Locking [dev-packages] dependencies…
+Locking [packages] dependencies…
+✔ Success!
+Updated Pipfile.lock (caf66b)!
+Installing dependencies from Pipfile.lock (caf66b)…
+   ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ 9/9 — 00:00:02
+Set up our database configuration with a new file called config.py:
+
+vim ~/tickets/config.py
+Provide the following contents:
+
+Note: Be sure to replace < DB_PRIVATE_IP > with the private IP address for the Database server provided on the hands-on lab page.
+
+import os
+
+db_host = os.environ.get('DB_HOST', default='< DB_PRIVATE_IP >')
+db_name = os.environ.get('DB_NAME', default='dashboard')
+db_password = os.environ.get('DB_PASSWORD', default='secure_password')
+db_port = os.environ.get('DB_PORT', default='5432')
+db_user = os.environ.get('DB_USERNAME', default='dashboard')
+
+SQLALCHEMY_DATABASE_URI = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
+Save and quit the file.
+
+Create a file (models.py) to contain our database logic and classes wrapping database tables:
+
+vim ~/tickets/models.py
+Provide the following contents:
+
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
+
+class Ticket(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    status = db.Column(db.Integer, nullable=False)
+    url = db.Column(db.String(100), nullable=True)
+
+    statuses_dict = {
+        0: 'Reported',
+        1: 'In Progress',
+        2: 'In Review',
+        3: 'Resolved',
+    }
+
+    def status_string(self):
+        return self.statuses_dict[self.status]
+Save and quit the file.
+
+Edit the __init__.py file:
+
+vim ~/tickets/__init__.py
+Make the necessary changes. Your file should look like this:
+
+import os
+
+from flask import Flask
+
+def create_app(test_config=None):
+    app = Flask(__name__)
+    app.config.from_mapping(
+        SECRET_KEY=os.getenv('SECRET_KEY', default='dev'),
+    )
+
+    if test_config is None:
+        app.config.from_pyfile('config.py', silent=True)
+    else:
+        app.config.from_mapping(test_config)
+
+    from .models import db
+    db.init_app(app)
+
+    return app
+Save and quit the file.
+
+Render /tickets and /tickets/:id views
+Copy the ~/templates and ~/static directories into our application:
+
+mv ~/templates .
+mv ~/static .
+Edit the __init__.py file:
+
+vim ~/tickets/__init__.py
+Make the necessary changes to create the request handler functions (these handlers will be defined as functions within our create_app function). Your file should look like this:
+
+import os
+
+from flask import Flask, redirect, render_template, url_for
+
+def create_app(test_config=None):
+    app = Flask(__name__)
+    app.config.from_mapping(
+        SECRET_KEY=os.getenv('SECRET_KEY', default='dev'),
+    )
+
+    if test_config is None:
+        app.config.from_pyfile('config.py', silent=True)
+    else:
+        app.config.from_mapping(test_config)
+
+    from .models import db
+    db.init_app(app)
+
+    @app.route('/')
+    def index():
+        return redirect(url_for('tickets'))
+
+    @app.route('/tickets')
+    def tickets():
+        return render_template('tickets_index.html')
+
+    @app.route('/tickets/<int:ticket_id>')
+    def tickets_show(ticket_id):
+        return render_template('tickets_show.html')
+
+    return app
+Save and quit the file.
+
+In a new web browser tab, navigate to the public IP of the Workstation server at port 3000: <PUBLIC_IP>:3000
+
+We should see the templates are properly rendered out. We'll also see we've been redirected to the /tickets URL.
+Edit the __init__.py file:
+
+vim ~/tickets/__init__.py
+Make the necessary changes to query our database for the tickets so we can pass them to our templates. (In the tickets function, we'll fetch all of the items from the database to list out. From the tickets_show function, we'll fetch just one based on the ID that is passed into the URL.) Your file should look like this:
+
+import os
+
+from flask import Flask, abort, redirect, render_template, url_for
+
+def create_app(test_config=None):
+    app = Flask(__name__)
+    app.config.from_mapping(
+        SECRET_KEY=os.getenv('SECRET_KEY', default='dev'),
+    )
+
+    if test_config is None:
+        # Load configuration from config.py
+        app.config.from_pyfile('config.py', silent=True)
+    else:
+        app.config.from_mapping(test_config)
+
+    from .models import db, Ticket
+    db.init_app(app)
+
+    from sqlalchemy.orm import exc
+
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return render_template('404.html'), 404
+
+    @app.route('/')
+    def index():
+        return redirect(url_for('tickets'))
+
+    @app.route('/tickets')
+    def tickets():
+        tickets = Ticket.query.all()
+        return render_template('tickets_index.html', tickets=tickets)
+
+    @app.route('/tickets/<int:ticket_id>')
+    def tickets_show(ticket_id):
+        try:
+            ticket = Ticket.query.filter_by(id=ticket_id).one()
+            return render_template('tickets_show.html', ticket=ticket)
+        except exc.NoResultFound:
+            abort(404)
+
+    return app
+Notice we had to add a little error handling to the tickets_show view function because it's possible for someone to pass in an ID that doesn't exist. In this case, we're going to use the one function that will throw a sqlalchemy.orm.exc.NoResultFound error if there is not a matching row. We catch that error in our except and then Flask will automatically run the function we've decorated with @app.errorhandler(404).
+
+Save and quit the file.
+
+The last thing we need to do is utilize the tickets and ticket variables within templates/tickets_index.html and templates/tickets_show.html.
+
+Edit the tickets_index.html file:
+
+vim ~/tickets/templates/tickets_index.html
+The adjusted lines should look like this:
+
+  <!-- Contents above this comment were omitted -->
+  <!-- EXAMPLE ROW, substitue the real information from the tickets in the database -->
+  {% for ticket in tickets %}
+    <tr>
+      <th>{{ticket.id}}</th>
+      <td>{{ticket.name}}</td>
+      <td>{{ticket.status_string()}}</td>
+      <td>
+        <a href="{{ticket.url}}">{{ticket.url}}</a>
+      </td>
+      <td>
+        <a href="{{url_for('tickets_show', ticket_id=ticket.id)}}">Details</a>
+      </td>
+    </tr>
+  {% endfor %}
+  <!-- Contents below this comment were omitted -->
+Save and quit the file.
+
+Refresh the tickets page in the web browser, where we should see a long list of tickets.
+
+Edit the tickets_show.html file:
+
+vim ~/tickets/templates/tickets_show.html
+The adjusted lines should look like this:
+
+{% extends "layout.html" %}
+{% block title %}Ticket - {{ticket.name}}{% endblock %}
+
+{% block body %}
+<div class="content">
+  <p><strong>Name:</strong> {{ticket.name}}</p>
+  <p><strong>Status:</strong> {{ticket.status_string()}}</p>
+  <p><strong>URL:</strong> <a href="{{ticket.url}}" target="_blank">{{ticket.url}}</a></p>
+</div>
+{% endblock %}
+It's important that we call the status_string method using parentheses, otherwise we'll render a message about there being a method bound to the ticket variable on the page.
+
+Save and quit the file.
+
+Add /api/tickets and /api/tickets/:id JSON API endpoints
+Edit the __init__.py file:
+
+vim ~/tickets/__init__.py
+Make the necessary changes. The file should now look like this:
+
+import os
+
+from flask import Flask, abort, redirect, render_template, url_for, jsonify
+
+def create_app(test_config=None):
+    app = Flask(__name__)
+    app.config.from_mapping(
+        SECRET_KEY=os.getenv('SECRET_KEY', default='dev'),
+    )
+
+    if test_config is None:
+        # Load configuration from config.py
+        app.config.from_pyfile('config.py', silent=True)
+    else:
+        app.config.from_mapping(test_config)
+
+    from .models import db, Ticket
+    db.init_app(app)
+
+    from sqlalchemy.orm import exc
+
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return render_template('404.html'), 404
+
+    @app.route('/')
+    def index():
+        return redirect(url_for('tickets'))
+
+    @app.route('/tickets')
+    def tickets():
+        tickets = Ticket.query.all()
+        return render_template('tickets_index.html', tickets=tickets)
+
+    @app.route('/tickets/<int:ticket_id>')
+    def tickets_show(ticket_id):
+        try:
+            ticket = Ticket.query.filter_by(id=ticket_id).one()
+            return render_template('tickets_show.html', ticket=ticket)
+        except exc.NoResultFound:
+            abort(404)
+
+    @app.route('/api/tickets')
+    def api_tickets():
+        tickets = Ticket.query.all()
+        return jsonify(tickets)
+
+    @app.route('/api/tickets/<int:ticket_id>')
+    def api_tickets_show(ticket_id):
+        try:
+            ticket = Ticket.query.filter_by(id=ticket_id).one()
+            return jsonify(ticket)
+        except exc.NoResultFound:
+            return jsonify({'error': 'Ticket not found'}), 404
+
+    return app
+Save and quit the file.
+
+In the browser, navigate to: <WORKSTATION_PUBLIC_IP>:3000/api/tickets
+
+We should receive an error because Object of type Ticket is not JSON serializable.
+This is something we'll need to fix within our model by adding a to_json method we can call before we pass our object to jsonify.
+Edit the models.py file:
+
+vim ~/tickets/models.py
+Make the necessary changes. The file should now look like this:
+
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
+
+class Ticket(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    status = db.Column(db.Integer, nullable=False)
+    url = db.Column(db.String(100), nullable=True)
+
+    statuses_dict = {
+        0: 'Reported',
+        1: 'In Progress',
+        2: 'In Review',
+        3: 'Resolved',
+    }
+
+    def status_string(self):
+        return self.statuses_dict[self.status]
+
+    def to_json(self):
+        """
+        Return the JSON serializable format
+        """
+        return {
+            'id': self.id,
+            'name': self.name,
+            'status': self.status_string(),
+            'url': self.url
+        }
+Save and quit the file.
+
+Edit the __init__.py file:
+
+vim ~/tickets/__init__.py
+Make the necessary changes to add a list comprehension:
+
+    # Extra code omitted
+
+    @app.route('/api/tickets')
+    def api_tickets():
+        tickets = Ticket.query.all()
+        return jsonify([ticket.to_json() for ticket in tickets])
+
+    @app.route('/api/tickets/<int:ticket_id>')
+    def api_tickets_show(ticket_id):
+        try:
+            ticket = Ticket.query.filter_by(id=ticket_id).one()
+            return jsonify(ticket.to_json())
+        except exc.NoResultFound:
+            return jsonify({'error': 'Ticket not found'}), 404
+
+    # Extra code omitted
+Save and quit the file.
+
+Refresh the api/tickets URL in the browser, where we should now see a JSON list of the tickets.

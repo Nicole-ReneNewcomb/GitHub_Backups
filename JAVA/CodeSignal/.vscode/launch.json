@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "comparestringsdigitremoval",
+            "request": "launch",
+            "mainClass": "comparestringsdigitremoval",
+            "projectName": "CodeSignal_28be7f46"
+        },
+        {
+            "type": "java",
+            "name": "sawtoothcontiguoussubarrays",
+            "request": "launch",
+            "mainClass": "sawtoothcontiguoussubarrays",
+            "projectName": "CodeSignal_28be7f46"
+        },
+        {
+            "type": "java",
+            "name": "sumofconcatenations",
+            "request": "launch",
+            "mainClass": "sumofconcatenations",
+            "projectName": "CodeSignal_28be7f46"
+        }
+    ]
+}

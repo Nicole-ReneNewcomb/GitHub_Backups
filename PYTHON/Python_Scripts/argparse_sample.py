@@ -1,5 +1,6 @@
 #!/usr/bin/env python3.11
 
+import os.path
 import argparse
 import sys            # Used to allow for changing of code (0: success to 1-2: error) when exception thrown
 
@@ -19,7 +20,7 @@ args = parser.parse_args()                          # Default uses sys.argv argu
 
 # Use try/except/else/finally statement to prevent standard error when running file w/o filename argument
 try:
-    f = open(args.filename)
+    f = open(os.path.join(os.path.dirname(__file__), args.filename))
     limit = args.limit
 except FileNotFoundError as err:
      print(f"Error: {err}")
