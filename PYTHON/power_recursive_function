@@ -11,7 +11,36 @@ def request_user_input():
     is_int = False
     x_n = tuple()
 
+    # validates that input for x is a floating point value
+    while not is_float:
+        x = input("\nPlease enter a floating point value for x: ")
+        
+        try:
+            if x.find('.') > 0 and float(x):
+                x = float(x)
+                is_float = True
+            else:
+                print("\nInvalid input: please enter number with decimal places.")
+        except:
+            print("\nInvalid input: please enter a numerical floating point value.")
 
+    # validates that input for n is an integer value
+    while not is_int:
+        n = input("\nPlease enter a positive integer value for n: ")
+        
+        try:
+            if n.find('.') < 0 and int(n):
+                n = int(n)
+                if n > 0:
+                    is_int = True
+                else:
+                    print("\nInvalid input: please enter a positive integer.")
+            else:
+                print("\nInvalid input: please enter a whole number without decimal places.")
+        except:
+            print("\nInvalid input: please enter a numerical integer value.")
+    
+    x_n = (x, n)
 
     return x_n
 
