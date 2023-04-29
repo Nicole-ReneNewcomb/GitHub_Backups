@@ -1,0 +1,12 @@
+"""
+    Student: Nicole-Rene Newcomb
+    Class: CIS024C Python Programming
+    Description: program calculates an exponential value x^n
+        using a recursive function call based on user input.
+"""
+
+
+
+# checks that main function exists, then calls it
+if __name__ == "__main__":
+    main()
