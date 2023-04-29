@@ -5,6 +5,16 @@
         using a recursive function call based on user input.
 """
 
+# function requests user input and validates input
+def request_user_input():
+    is_float = False
+    is_int = False
+    x_n = tuple()
+
+
+
+    return x_n
+
 # prints program header
 def print_header():
     dividing_lines = '='*60
