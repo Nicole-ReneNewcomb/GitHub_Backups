@@ -5,6 +5,16 @@
         using a recursive function call based on user input.
 """
 
+# prints program header
+def print_header():
+    dividing_lines = '='*60
+    
+    print()
+    print()
+    print(dividing_lines)
+    print("\t\tPOWER RECURSIVE FUNCTION")
+    print(dividing_lines)
+    print("\nThis program calculates x to the power of n.")
 
 # contains contents of main function
 def main():
