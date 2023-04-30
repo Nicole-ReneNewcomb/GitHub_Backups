@@ -5,6 +5,19 @@
         using a recursive function call based on user input.
 """
 
+
+# prints program header
+def print_header():
+    dividing_lines = '='*60
+    
+    print()
+    print()
+    print(dividing_lines)
+    print("\t\tPOWER RECURSIVE FUNCTION")
+    print(dividing_lines)
+    print("\nThis program calculates x to the power of n.")
+
+
 # function requests user input and validates input
 def request_user_input():
     is_float = False
@@ -44,16 +57,6 @@ def request_user_input():
 
     return x_n
 
-# prints program header
-def print_header():
-    dividing_lines = '='*60
-    
-    print()
-    print()
-    print(dividing_lines)
-    print("\t\tPOWER RECURSIVE FUNCTION")
-    print(dividing_lines)
-    print("\nThis program calculates x to the power of n.")
 
 # recursive function that calculates value of base/exponent variables
 def power(x, n):
@@ -63,12 +66,35 @@ def power(x, n):
     else:
         return (x * power(x, n-1))
 
+
+# outputs result in desired format based on result value
+def output_result(x, n, result):
+    if result < -99999.9:
+        print ("\nThe result of {} to the power of {} is: {:,.0f}".format(x, n, result))
+    
+    elif result < -9999.99:
+        print ("\nThe result of {} to the power of {} is: {:,.2f}".format(x, n, result))
+    
+    elif result < -999.999:
+         print ("\nThe result of {} to the power of {} is: {:.6g}".format(x, n, result))
+    
+    elif result < 1000:
+        print ("\nThe result of {} to the power of {} is: {:.6g}".format(x, n, result))
+    
+    elif result < 10000:
+        print ("\nThe result of {} to the power of {} is: {:,.2f}".format(x, n, result))
+
+    else:
+        print ("\nThe result of {} to the power of {} is: {:,.0f}".format(x, n, result))
+
+
 # contains contents of main function
 def main():
     print_header()
     x, n = request_user_input()
     result = power(x, n)
     output_result(x, n, result)
+
 
 # checks that main function exists, then calls it
 if __name__ == "__main__":
