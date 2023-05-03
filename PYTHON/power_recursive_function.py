@@ -1,4 +1,4 @@
-"""
+"""-
     Student: Nicole-Rene Newcomb
     Class: CIS024C Python Programming
     Description: program calculates an exponential value x^n
@@ -76,7 +76,7 @@ def output_result(x, n, result):
         print ("\nThe result of {} to the power of {} is: {:,.2f}".format(x, n, result))
     
     elif result < -999.999:
-         print ("\nThe result of {} to the power of {} is: {:.6g}".format(x, n, result))
+         print ("\nThe result of {} to the power of {} is: {:,.6g}".format(x, n, result))
     
     elif result < 1000:
         print ("\nThe result of {} to the power of {} is: {:.6g}".format(x, n, result))
