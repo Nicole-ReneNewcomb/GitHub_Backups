@@ -90,11 +90,15 @@ def output_result(x, n, result):
 
 # contains contents of main function
 def main():
-    print_header()
-    x, n = request_user_input()
-    result = power(x, n)
-    output_result(x, n, result)
-
+    runAgain = ""
+    while runAgain != "no":
+        runAgain = ""
+        print_header()
+        x, n = request_user_input()
+        result = power(x, n)
+        output_result(x, n, result)
+        while runAgain not in ["yes", "no"]:
+            runAgain = input("\nWould you like to use the program again? Enter yes/no: ").lower()
 
 # checks that main function exists, then calls it
 if __name__ == "__main__":
