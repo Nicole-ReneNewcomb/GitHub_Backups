@@ -78,13 +78,19 @@ public class MySorts {
         // determine/assign end value to pass to private method
         int end = arr.length - 1;
 
-        // call private recursive function
+        // call private quick sort recursive function
         quickSortRecursive(arr, begin, end);
     }
 
     // Called when user selects merge sort (option 5)
     public static void mergeSort(int[] arr) {
+        // assign begin value to pass to private method
+        int begin = 0;
+        // determine/assign end value to pass to private method
+        int end = arr.length - 1;
 
+        // call private merge sort recursive function
+        mergeSortRecursive(arr, begin, end);
     }
 
     private static void merge(int[] arr, int start, int middle, int end) {
