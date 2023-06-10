@@ -89,7 +89,17 @@ public class MySorts {
 
     }
 
+    // determines pivot value from which to divide array into two parts
     private static int pivot(int[] arr, int begin, int end) {
+        // assign index of middle element as mid
+        int mid = begin + (end-begin) / 2;
+        // assign value at mid as pivot value
+        int pivot = arr[mid];
+        // create boolean flag to indicate when array sorted
+        boolean sorted = false;
+
+        
+
 
     }
 
