@@ -95,10 +95,12 @@ public class MySorts {
         int mid = begin + (end-begin) / 2;
         // assign value at mid as pivot value
         int pivot = arr[mid];
-        // create boolean flag to indicate when array sorted
-        boolean sorted = false;
+        // create boolean flag to indicate when array partitioned
+        boolean partitioned = false;
+        // create temporary variable to hold value during swaps
+        int tmp = 0;
 
-        while (!sorted) {
+        while (!partitioned) {
             // increment begin index while value < pivot
             while (arr[begin] < pivot) {
                 begin++;
@@ -108,9 +110,24 @@ public class MySorts {
             while (pivot < arr[end]) {
                 end--;
             }
+
+            // if array fully partitioned (0 or 1 elements remain), flag true
+            if (begin >= end) {
+                partitioned = true;
+            }
+
+            // else, if not fully partitioned, swap values at begin and end
+            else {
+                tmp = arr[begin];
+                arr[begin] = arr[end];
+                arr[end] = tmp;
+
+                // update begin and end index values
+                begin++;
+                end--;
+            }
         }
-
-
+        return end;
     }
 
     private static void quickSortRecursive(int[] arr, int begin, int end) {
