@@ -21,9 +21,18 @@ public class MySorts {
         // outer loop - increments as sorted part grows
         // when outer loop finished, entire array sorted
         for (i = 1; i < l; i++) {
+            j = i;
 
+            // inner loop - decrements to compare new value to sorted values
+            while (j > 0 && arr[j] < arr[j-1]) {
+
+                // swaps values (until sorted part in ascending order)
+                tmp = arr[j];
+                arr[j] = arr[j-1];
+                arr[j-1] = tmp;
+                j--;
+            }
         }
-
     }
 
     // Called when user selects select sort (option 2)
