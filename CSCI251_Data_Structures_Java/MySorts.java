@@ -21,6 +21,7 @@ public class MySorts {
         // outer loop - increments as sorted part grows
         // when outer loop finished, entire array sorted
         for (i = 1; i < l; i++) {
+            // start index j at index i for each outer loop
             j = i;
 
             // inner loop - decrements to compare new value to sorted values
@@ -48,7 +49,26 @@ public class MySorts {
         // variable to contain smallest unsorted element during loop
         int minIndex = 0;
 
-        
+        // outer loop - increments to next unsorted value
+        // when outer loop finished, entire array sorted
+        for (i = 0; i < l; i++) {
+            // assign index i as minIndex value for each outer loop
+            minIndex = i;
+
+            // inner loop increments through unsorted part to find min value
+            for (j = i + 1; j < l; j++) {
+
+                // if smaller value found in unsorted, update minIndex
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+
+            // swap values so minimum number from unsorted part moved to sorted part
+            tmp = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = tmp;
+        }
     }
 
     // Called when user selects quick sort (option 4)
