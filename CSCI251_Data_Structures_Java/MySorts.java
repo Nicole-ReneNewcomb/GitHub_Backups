@@ -15,6 +15,14 @@ public class MySorts {
         int i = 0;
         // counter for inner loop
         int j = 0;
+        // temporary variable to hold value during position swap
+        int tmp = 0;
+
+        // outer loop - increments as sorted part grows
+        // when outer loop finished, entire array sorted
+        for (i = 1; i < l; i++) {
+
+        }
 
     }
 
