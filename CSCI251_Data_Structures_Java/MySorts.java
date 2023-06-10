@@ -101,7 +101,7 @@ public class MySorts {
 
     }
 
-    // determines pivot value from which to divide array into two parts
+    // determines index from which to divide array into two parts (quick sort)
     private static int pivot(int[] arr, int begin, int end) {
         // assign index of middle element as mid
         int mid = begin + (end-begin) / 2;
@@ -142,7 +142,7 @@ public class MySorts {
         return end;
     }
 
-    // recursively calls pivot method and itself to sort array
+    // recursively calls pivot method and itself to sort array (quick sort)
     private static void quickSortRecursive(int[] arr, int begin, int end) {
         // return if partition is 0 or 1 element since part already sorted
         if (begin >= end) {
