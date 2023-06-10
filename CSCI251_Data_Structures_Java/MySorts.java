@@ -9,6 +9,12 @@ public class MySorts {
 
     // Called when user selects insert sort (option 3)
     public static void insertSort(int[] arr) {
+        // assign length of array
+        int l = arr.length;
+        // counter for outer loop
+        int i = 0;
+        // counter for inner loop
+        int j = 0;
 
     }
 
