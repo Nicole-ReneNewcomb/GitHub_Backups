@@ -102,8 +102,18 @@ public class MySorts {
     private static void mergeSortRecursive(int[] arr, int begin, int end) {
         // create variable to hold midpoint index
         int middle = 0;
+
+        // if begin < end, determine/assign midpoint to middle variable
+        if (begin < end) {
+            middle = (begin + end) / 2;
+        }
         
-        // determine/assign midpoint
+        // sort left/right partitions through recursively calling itself
+        mergeSortRecursive(arr, begin, middle);
+        mergeSortRecursive(arr, middle + 1, end);
+
+        // call merge method to merge left/right into sorted array
+        merge(arr, begin, middle, end);
     }
 
     // determines index from which to divide array into two parts (quick sort)
