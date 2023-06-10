@@ -7,12 +7,12 @@
 
 public class MySorts {
 
-    // Called when user selects insertion sort (option 3)
+    // Called when user selects insert sort (option 3)
     public static void insertSort(int[] arr) {
 
     }
 
-    // Called when user selects selection sort (option 2)
+    // Called when user selects select sort (option 2)
     public static void selectSort (int[] arr_) {
 
     }
