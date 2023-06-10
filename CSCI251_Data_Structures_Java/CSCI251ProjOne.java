@@ -20,6 +20,11 @@ public class CSCI251ProjOne
         Random randGen = new Random();
         for(int i = 0; i < arr.length; i++)
             arr[i] = randGen.nextInt(RANGE);
+        System.out.println("[");
+        for(int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i] + ", ");
+        }
+        System.out.print("]\n");
     }
     
     /**
@@ -86,6 +91,12 @@ public class CSCI251ProjOne
             
         long end = Calendar.getInstance().getTimeInMillis();
         if(isSorted(a)){
+            System.out.println("[");
+            for(int i = 0; i < a.length; i++) {
+                System.out.print(a[i] + ", ");
+            }
+            System.out.print("]\n");
+
             totalTime = end - start;
             System.out.println("Execution time for " + name + " is: " + totalTime + " milliseconds");
         }
