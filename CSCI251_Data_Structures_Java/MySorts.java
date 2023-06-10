@@ -98,7 +98,17 @@ public class MySorts {
         // create boolean flag to indicate when array sorted
         boolean sorted = false;
 
-        
+        while (!sorted) {
+            // increment begin index while value < pivot
+            while (arr[begin] < pivot) {
+                begin++;
+            }
+
+            // decrement end index while value > pivot
+            while (pivot < arr[end]) {
+                end--;
+            }
+        }
 
 
     }
