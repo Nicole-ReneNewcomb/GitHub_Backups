@@ -1,4 +1,4 @@
-public class Mysorts {
+public class MySorts {
 
     public static void insertsort(int[] arr) {
 
@@ -13,6 +13,6 @@ public class Mysorts {
     }
 
     public static void mergeSort(int[] arr) {
-        
+
     }
 }
