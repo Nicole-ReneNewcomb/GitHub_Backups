@@ -95,7 +95,63 @@ public class MySorts {
 
     // function merges left/right parts into sorted array (merge sort)
     private static void merge(int[] arr, int start, int middle, int end) {
+        // assign number of elements to variable size
+        int size = end - start + 1;
+        // create temporary array to hold values sorted from left/right parts
+        int[] mergedNums = new int[size];
+        // create variable for temporary array (mergedNums) index
+        int mergedIndex = 0;
+        // create index variable for left part
+        int leftIndex = 0;
+        // create index variable for right part
+        int rightIndex = 0;
 
+        // assign start index as initial leftIndex
+        leftIndex = start;
+        // assign middle + 1 as initial rightIndex
+        rightIndex = middle + 1;
+
+        // while still elements in both right and left parts
+        while (leftIndex <= middle && rightIndex <= end) {
+            // if left part's index has lowest value (or equal value as right)
+            if (arr[leftIndex] <= arr[rightIndex]) {
+                // assign left value to temporary array
+                mergedNums[mergedIndex] = arr[leftIndex];
+                // increment leftIndex
+                leftIndex++;
+            }
+            // else, if right part's index has lowest value
+            else {
+                // assign right value to temporary array
+                mergedNums[mergedIndex] = arr[rightIndex];
+
+                // increment rightIndex
+                rightIndex++;
+            }
+            // increment mergedIndex
+            mergedIndex++;
+        }
+
+        // if right partition empty and only left part has remaining values
+        while (leftIndex <= middle) {
+            // add remaining values from left part to temporary array
+            mergedNums[mergedIndex] = arr[leftIndex];
+            leftIndex++;
+            mergedIndex++;
+        }
+
+        // if left partition is empty and only right part has remaining values
+        while (rightIndex <= end) {
+            // add remaining values from right part to temporary array
+            mergedNums[mergedIndex] = arr[rightIndex];
+            rightIndex++;
+            mergedIndex++;
+        }
+
+        // copy numbers in temporary array back to arr array
+        for (mergedIndex = 0; mergedIndex < size; mergedIndex++) {
+            arr[start + mergedIndex] = mergedNums[mergedIndex];
+        }
     }
 
     // recursive function calls itself and merge method for left/right parts (merge sort)
@@ -106,6 +162,9 @@ public class MySorts {
         // if begin < end, determine/assign midpoint to middle variable
         if (begin < end) {
             middle = (begin + end) / 2;
+        }
+        else {
+            return;
         }
         
         // sort left/right partitions through recursively calling itself
