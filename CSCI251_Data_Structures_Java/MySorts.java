@@ -93,12 +93,17 @@ public class MySorts {
         mergeSortRecursive(arr, begin, end);
     }
 
+    // function merges left/right parts into sorted array (merge sort)
     private static void merge(int[] arr, int start, int middle, int end) {
 
     }
 
+    // recursive function calls itself and merge method for left/right parts (merge sort)
     private static void mergeSortRecursive(int[] arr, int begin, int end) {
-
+        // create variable to hold midpoint index
+        int middle = 0;
+        
+        // determine/assign midpoint
     }
 
     // determines index from which to divide array into two parts (quick sort)
