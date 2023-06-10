@@ -1,6 +1,6 @@
 /* Nicole-Rene Newcomb's Project 1 for CSCI251, Summer 2023:
  * MySorts.java includes the code to perform four sorts - 
- * insertion sort, selection sort, quicksort, and merge sert.
+ * insertion sort, selection sort, quicksort, and merge sort.
  * This file is called from CSCI251ProjOne.java after the user
  * selects the desired sort from the menu.
  */
