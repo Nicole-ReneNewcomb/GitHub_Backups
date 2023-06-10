@@ -1,6 +1,6 @@
 public class MySorts {
 
-    public static void insertsort(int[] arr) {
+    public static void insertSort(int[] arr) {
 
     }
 
