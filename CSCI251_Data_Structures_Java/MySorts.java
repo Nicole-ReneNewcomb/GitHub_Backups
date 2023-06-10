@@ -36,8 +36,19 @@ public class MySorts {
     }
 
     // Called when user selects select sort (option 2)
-    public static void selectSort (int[] arr_) {
+    public static void selectSort (int[] arr) {
+        // assign length of array
+        int l = arr.length;
+        // counter for outer loop
+        int i = 0;
+        // counter for inner loop
+        int j = 0;
+        // temporary variable to hold value during position swap
+        int tmp = 0;
+        // variable to contain smallest unsorted element during loop
+        int minIndex = 0;
 
+        
     }
 
     // Called when user selects quick sort (option 4)
