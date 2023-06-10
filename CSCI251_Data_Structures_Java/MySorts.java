@@ -130,7 +130,18 @@ public class MySorts {
         return end;
     }
 
+    // recursively calls pivot method and itself to sort array
     private static void quickSortRecursive(int[] arr, int begin, int end) {
+        // return if partition is 0 or 1 element since part already sorted
+        if (begin >= end) {
+            return;
+        }
 
+        // call pivot method to determine partition split index (end of low part)
+        int splitIndex = pivot(arr, begin, end);
+
+        // call method recursively for low/high partition sections
+        quickSortRecursive(arr, begin, splitIndex);
+        quickSortRecursive(arr, splitIndex + 1, end);
     }
 }
