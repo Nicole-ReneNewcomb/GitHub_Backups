@@ -67,7 +67,7 @@ int getLines()
 	ifstream inputFile("Project_11_Input_File.txt");
 
 	// loop to count number of lines (number of checking account entries)
-	while (getLine(inputFile, tempString))
+	while (getline(inputFile, tempString))
 	{
 		counter++;
 	}
