@@ -1,3 +1,0 @@
-﻿  Newcomb_Project_8.cpp
-C:\Users\Nicole-Rene\Documents\GitHub\GitHub_Backups\CMPR120\Project_8\Newcomb_Project_8.cpp(89,16): warning C4244: 'initializing': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Project_8.vcxproj -> C:\Users\Nicole-Rene\Documents\GitHub\GitHub_Backups\CMPR120\Project_8\x64\Debug\Project_8.exe
